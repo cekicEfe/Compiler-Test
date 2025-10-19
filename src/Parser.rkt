@@ -6,20 +6,27 @@
   (parser
     (start exp)
     (end EOF)
+
     (tokens value-tokens op-tokens )
+
     (src-pos)
+
     (error (lambda (a b c d e) (begin (printf "a = ~a\nb = ~a\nc = ~a\nd = ~a\ne = ~a\n" a b c d e) (void))))   
+
+    ;;(precs    
+    ;;  (left ADD SUBTRACT)
+    ;;  (left PRODUCT DIVISION)
+    ;;  (nonassoc NEG)
+    ;;  (left POWER))
+
     (grammar
       (exp [(NUMBER) $1]
-           [(exp exp ADD) (+ $1 $2)]
+           [(exp exp ADD)      (+ $1 $2)]
            [(exp exp SUBTRACT) (- $1 $2)]
-           [(exp exp PRODUCT) (* $1 $2)]
+           [(exp exp PRODUCT)  (* $1 $2)]
            [(exp exp DIVISION) (/ $1 $2)]
-           [(exp exp POWER) (expt $1 $2)]
-      )
-    )
-  )
-)
+           [(exp exp POWER)    (expt $1 $2)]
+      ))))
              
 (define (parse ip)
   (port-count-lines! ip)  
