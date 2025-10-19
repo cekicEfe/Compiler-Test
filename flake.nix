@@ -1,5 +1,6 @@
 {
-  description = "Cpp development environment";
+
+  description = "Racket development environment";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -13,28 +14,15 @@
         devShell = pkgs.mkShell {
 
           # Dependencies for project
-          buildInputs = [
-            pkgs.gcc
-            pkgs.cmake
-            pkgs.valgrind
+          buildInputs = [ pkgs.racket ];
 
-            pkgs.yacc
-            pkgs.flex
-            pkgs.llvm
-          ];
-
-          # Links libraries to shell
+          #links libraries to shell
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
-            pkgs.gcc
-            pkgs.cmake
-            pkgs.valgrind
-
-            pkgs.llvm
+            #
           ];
 
           shellHook = ''
-            echo ${pkgs.llvm}
-            PS1="[\\u@\\h && CPP-DEV-ENV:\\w]\$ "
+            PS1="[\\u@\\h && RACKET-DEV-ENV:\\w]\$ "
           '';
         };
       });
