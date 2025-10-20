@@ -26,7 +26,10 @@
            [(exp exp PRODUCT)  (* $1 $2)]
            [(exp exp DIVISION) (/ $1 $2)]
            [(exp exp POWER)    (expt $1 $2)]
-      ))))
+      )
+    )
+  )
+)
              
 (define (parse ip)
   (port-count-lines! ip)  
