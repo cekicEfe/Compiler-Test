@@ -16,6 +16,10 @@
 (define (my-lex-test str)
     (lex-test (open-input-string str)))
 
-(my-lex-test "312 32 321.3213214 yellow boi123_")
-    
+(my-lex-test "312 32 321.3213214 yellow boi123_
+             dsa dsa sss ddsadsa fde23213_321_32_dadsa
+             ____dadsadufcdsddsagaddds____213213
+             ______adsa ssdfgadsadwe
+             sssdfghjdiwofubsbalaodudhsbavxxvhdjfkdhahwgwtwtyruritpypfkn")
+
 (provide my-lex-test)

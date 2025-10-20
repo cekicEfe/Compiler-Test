@@ -4,11 +4,12 @@
   (prefix-in : parser-tools/lex-sre))
  
 (define-tokens value-tokens (NUMBER ID))
-(define-empty-tokens op-tokens (EOF ADD SUBTRACT PRODUCT DIVISION POWER NEWLINE))
+(define-empty-tokens op-tokens (EOF ADD SUBTRACT PRODUCT DIVISION POWER NEWLINE
+                                LPARAM RPARAM))
  
 (define next-token
   (lexer-src-pos
-    [(eof) (token-EOF)]    ;; eof
+    [(eof) (token-EOF)] ;; eof
     [(:+ (:& (:~ #\newline) whitespace)) (return-without-pos (next-token input-port))] ;; (\sp|\tab)+
 
     [#\+ (token-ADD)]      ;; \+
@@ -16,13 +17,15 @@
     [#\* (token-PRODUCT)]  ;; \*
     [#\/ (token-DIVISION)] ;; \/ 
     [#\^ (token-POWER)]    ;; \^
+    [#\( (token-LPARAM)]   ;; \(
+    [#\) (token-RPARAM)]   ;; \)
     [#\newline (token-NEWLINE)]
 
     [(:seq (:+ numeric) (:* (:seq #\. (:+ numeric) )))
       (token-NUMBER (string->number lexeme))] ;;[0-9]\.[0-9]
-    [(:seq (:+ alphabetic) (:* (:or alphabetic numeric)) (:* #\_) )
+    [(:seq (:* #\_) (:+ alphabetic) (:* (:or alphabetic numeric (:* #\_))))
       (token-ID (string->symbol lexeme))] ;;[a-zA-Z][a-zA-Z0-9]*\_
-    
+
   )
 )                        
 

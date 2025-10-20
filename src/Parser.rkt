@@ -4,7 +4,7 @@
  
 (define myparser
   (parser
-    (start exp)
+    (start input)
     (end EOF)
 
     (tokens value-tokens op-tokens )
@@ -20,19 +20,34 @@
     ;;  (left POWER))
 
     (grammar
-      (exp [(NUMBER) $1]
-           [(exp exp ADD)      (+ $1 $2)]
-           [(exp exp SUBTRACT) (- $1 $2)]
-           [(exp exp PRODUCT)  (* $1 $2)]
-           [(exp exp DIVISION) (/ $1 $2)]
-           [(exp exp POWER)    (expt $1 $2)]
+      (input [() '()]
+             [(input line) (append $1  $2)])
+
+      (line [(NEWLINE) '()]
+            [(exp NEWLINE) (list $1)])
+
+      (exp 
+           [(exp ADD term)      (+ $1 $3)]
+           [(exp SUBTRACT term) (- $1 $3)]
+           [(term)              $1]
+           ;;[(exp PRODUCT exp )  (* $1 $3)]
+           ;;[(exp DIVISION exp ) (/ $1 $3)]
+           ;;[(exp POWER exp )    (expt $1 $3)]
+           ;;[(LPARAM exp RPARAM) $2]
       )
+      (term [(term PRODUCT factor)  (list $1 $3)]
+            [(term DIVISION factor) (list $1 $3)]
+            [(term POWER factor)    (list $1 $3)]
+            [(factor)               (list $1)])
+      (factor [(NUMBER) $1]
+              [(ID)     $1]
+              [(LPARAM exp RPARAM) (list $2)])
     )
   )
 )
              
 (define (parse ip)
   (port-count-lines! ip)  
-  (myparser (lambda () (next-token ip))))   
- 
+  (myparser (lambda () (next-token ip))))
+
 (provide parse)
