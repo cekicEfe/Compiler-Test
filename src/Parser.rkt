@@ -21,27 +21,27 @@
 
     (grammar
       (input [() '()]
-             [(input line) (append $1  $2)])
+             [(input line) (append $1 $2)])
 
       (line [(NEWLINE) '()]
             [(exp NEWLINE) (list $1)])
 
-      (exp 
-           [(exp ADD term)      (+ $1 $3)]
-           [(exp SUBTRACT term) (- $1 $3)]
-           [(term)              $1]
+      (exp [(exp ADD term)      (list $1 'ADD $3)]
+           [(exp SUBTRACT term) (list $1 'SUBTRACT $3)]
+           [(term)              $1])
            ;;[(exp PRODUCT exp )  (* $1 $3)]
            ;;[(exp DIVISION exp ) (/ $1 $3)]
            ;;[(exp POWER exp )    (expt $1 $3)]
-           ;;[(LPARAM exp RPARAM) $2]
-      )
-      (term [(term PRODUCT factor)  (list $1 $3)]
-            [(term DIVISION factor) (list $1 $3)]
-            [(term POWER factor)    (list $1 $3)]
-            [(factor)               (list $1)])
-      (factor [(NUMBER) $1]
-              [(ID)     $1]
-              [(LPARAM exp RPARAM) (list $2)])
+           ;;[(LPARAM exp RPARAM) $2]   
+
+      (term [(term PRODUCT factor)  (list $1 'PRODUCT $3)]
+            [(term DIVISION factor) (list $1 'DIVISION $3)]
+            [(term POWER factor)    (list $1 'POWER $3)]
+            [(factor)               $1])
+
+      (factor [(NUMBER)            (list 'NUMBER $1)]
+              [(ID)                (list 'ID $1)]
+              [(LPARAM exp RPARAM) $2])
     )
   )
 )
