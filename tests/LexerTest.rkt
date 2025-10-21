@@ -20,6 +20,12 @@
              dsa dsa sss ddsadsa fde23213_321_32_dadsa
              ____dadsadufcdsddsagaddds____213213
              ______adsa ssdfgadsadwe
-             sssdfghjdiwofubsbalaodudhsbavxxvhdjfkdhahwgwtwtyruritpypfkn")
+             sssdfghjdiwofubsbalaodudhsbavxxvhdjfkdhahwgwtwtyruritpypfkn
+             if then else ;;;;;;;;")
+
+(printf "\n")
+
+(my-lex-test ";;;;;;;;;;;;
+             ")
 
 (provide my-lex-test)

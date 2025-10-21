@@ -21,18 +21,15 @@
 
     (grammar
       (input [() '()]
-             [(input line) (append $1 $2)])
+             [(input statement_list) (append $1 $2)])
 
-      (line [(NEWLINE) '()]
-            [(exp NEWLINE) (list $1)])
+      (statement [(exp)])
+
+      (statement_list [(statement_list statement) (append $1 $2)])      
 
       (exp [(exp ADD term)      (list $1 'ADD $3)]
            [(exp SUBTRACT term) (list $1 'SUBTRACT $3)]
            [(term)              $1])
-           ;;[(exp PRODUCT exp )  (* $1 $3)]
-           ;;[(exp DIVISION exp ) (/ $1 $3)]
-           ;;[(exp POWER exp )    (expt $1 $3)]
-           ;;[(LPARAM exp RPARAM) $2]   
 
       (term [(term PRODUCT factor)  (list $1 'PRODUCT $3)]
             [(term DIVISION factor) (list $1 'DIVISION $3)]
