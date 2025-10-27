@@ -23,7 +23,7 @@
       (input [() '()]
              [(input statement_list) (append $1 $2)])
 
-      (statement [(exp)])
+      (statement [(exp) $1])
 
       (statement_list [(statement_list statement) (append $1 $2)])      
 

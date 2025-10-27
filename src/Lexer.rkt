@@ -30,7 +30,6 @@
       (token-NUMBER (string->number lexeme))] ;;[0-9]\.[0-9]
     [(:seq (:* #\_) (:+ alphabetic) (:* (:or alphabetic numeric (:* #\_))))
       (token-ID (string->symbol lexeme))] ;;[a-zA-Z][a-zA-Z0-9]*\_
-
   )
 )                        
 

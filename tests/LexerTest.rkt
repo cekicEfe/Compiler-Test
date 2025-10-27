@@ -23,9 +23,4 @@
              sssdfghjdiwofubsbalaodudhsbavxxvhdjfkdhahwgwtwtyruritpypfkn
              if then else ;;;;;;;;")
 
-(printf "\n")
-
-(my-lex-test ";;;;;;;;;;;;
-             ")
-
 (provide my-lex-test)
