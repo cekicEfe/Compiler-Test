@@ -39,8 +39,6 @@
 
           shellHook = ''
             PS1="[\\u@\\h && CPP-DEV-ENV:\\w]\$ "
-            #export RUNTIME_SHIT=${pkgs.glibc}/lib
-            #export PATH=$RUNTIME_SHIT:$PATH
             export LIBRARY_PATH=${pkgs.glibc}/lib
           '';
         };
