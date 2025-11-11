@@ -1,9 +1,8 @@
 {
-
-  description = "Racket development environment";
+  description = "Cpp development environment";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
@@ -13,16 +12,36 @@
       in {
         devShell = pkgs.mkShell {
 
-          # Dependencies for project
-          buildInputs = [ pkgs.racket ];
+          nativeBuildInputs = [
+            #
+            pkgs.gcc
+            pkgs.cmake
+            pkgs.bison
+            pkgs.flex
+          ];
+
+          buildInputs = [
+            #
+            pkgs.libgcc
+            pkgs.glibc
+            pkgs.glibc.dev
+            pkgs.libgccjit
+          ];
 
           #links libraries to shell
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
             #
+            pkgs.libgcc
+            pkgs.glibc.dev
+            pkgs.glibc
+            pkgs.libgccjit
           ];
 
           shellHook = ''
-            PS1="[\\u@\\h && RACKET-DEV-ENV:\\w]\$ "
+            PS1="[\\u@\\h && CPP-DEV-ENV:\\w]\$ "
+            #export RUNTIME_SHIT=${pkgs.glibc}/lib
+            #export PATH=$RUNTIME_SHIT:$PATH
+            export LIBRARY_PATH=${pkgs.glibc}/lib
           '';
         };
       });
