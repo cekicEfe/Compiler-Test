@@ -17,6 +17,7 @@ You should have received a copy of the GNU General Public License
 along with GCC; see the file COPYING3.  If not see
 <http://www.gnu.org/licenses/>.  */
 
+#include <omp.h>
 #include <libgccjit.h>
 #include <stdio.h>
 #include <stdlib.h>

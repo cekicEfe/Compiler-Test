@@ -1,0 +1,4 @@
+#ifndef MY_GARBAGE_COLLECTOR_H
+#define MY_GARBAGE_COLLECTOR_H
+
+#endif

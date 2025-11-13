@@ -24,7 +24,7 @@ struct _yy_string_MINE {
 
 %token<ival> T_INT
 %token<fval> T_FLOAT
-%token T_PLUS T_MINUS T_MULTIPLY T_DIVIDE T_LEFTP T_RIGHTP T_TRUE T_FALSE
+%token T_PLUS T_MINUS T_MULTIPLY T_DIVIDE T_LEFT_P T_RIGHT_P T_TRUE T_FALSE
 %token T_NEWLINE T_QUIT
 %left T_PLUS T_MINUS
 %left T_MULTIPLY T_DIVIDE
@@ -39,6 +39,9 @@ struct _yy_string_MINE {
 input:
 	| calculation line
 	;
+
+s_exp_list:
+	| T_LEFT_P exp T_RIGHT_P {}
 
 
 %%
