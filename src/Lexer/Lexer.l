@@ -1,40 +1,27 @@
-%{   
+%option noyywrap
 
-#include "Parser.h"
-#define YY_USER_ACTION yylloc.first_line = yylloc.last_line = yylineno;
+%{
+#include <stdio.h>
+
+#define YY_DECL int yylex()
+
+#include "Parser.tab.h"
 
 %}
 
-%option noyywrap
-
-DIGIT    [0-9]
-LETTER   [a-zA-Z]
-   
 %%
 
-"-"            {return MINUS;}
-"+"            {return PLUS;}
-"*"            {return MULT;}
-"/"            {return DIV;}
-"="            {return EQUAL;}
-"("            {return L_PAREN;}
-")"            {return R_PAREN;}
-
-(\.{DIGIT}+)|({DIGIT}+(\.{DIGIT}*)?([eE][+-]?[0-9]+)?) {yylval.dval = atof(yytext); return NUMBER;}
-
-[ \t]+         {/* ignore spaces */}
-
-"\n"           {return END;}
-
-.              {printf("Error at line %d: unrecognized symbol \"%s\"\n", yylloc.first_line, yytext); exit(0);}
+[ \t]	; // ignore all whitespace
+[0-9]+\.[0-9]+ 	{yylval.fval = atof(yytext); return T_FLOAT;}
+[0-9]+		{yylval.ival = atoi(yytext); return T_INT;}
+\n		{return T_NEWLINE;}
+"+"		{return T_PLUS;}
+"-"		{return T_MINUS;}
+"*"		{return T_MULTIPLY;}
+"/"		{return T_DIVIDE;}
+"("		{return T_LEFT;}
+")"		{return T_RIGHT;}
+"exit"		{return T_QUIT;}
+"quit"		{return T_QUIT;}
 
 %%
-
-//int yywrap() {
-//   // open next reference or source file and start scanning
-//   if((yyin = compiler->getNextFile()) != NULL) {
-//      line = 0; // reset line counter for next source file
-//      return 0;
-//   }
-//   return 1;
-//}
