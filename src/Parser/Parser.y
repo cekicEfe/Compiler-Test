@@ -22,12 +22,14 @@ struct _yy_string_MINE {
 	_yy_string_MINE sVal;
 }
 
+
 %token<ival> T_INT
 %token<fval> T_FLOAT
-%token T_PLUS T_MINUS T_MULTIPLY T_DIVIDE T_LEFT_P T_RIGHT_P T_TRUE T_FALSE
-%token T_NEWLINE T_QUIT
-%left T_PLUS T_MINUS
-%left T_MULTIPLY T_DIVIDE
+
+%token T_TRUE T_FALSE T_LEFT_P T_RIGHT_P T_ID 
+
+//%left T_PLUS T_MINUS
+//%left T_MULTIPLY T_DIVIDE
 
 %type<ival> expression
 %type<fval> mixed_expression
@@ -37,12 +39,26 @@ struct _yy_string_MINE {
 %%
 
 input:
-	| calculation line
+	| s_exp_list
 	;
 
 s_exp_list:
-	| T_LEFT_P exp T_RIGHT_P {}
+	| s_exp s_exp_list
+	;
 
+s_exp:
+	| T_LEFT_P exp_list T_LEFT_P
+	;
+
+exp_list:
+	| exp exp_list
+	;
+
+exp:
+	| T_ID
+	| T_INT
+	| T_FLOAT
+	;
 
 %%
 
