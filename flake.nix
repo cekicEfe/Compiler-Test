@@ -18,6 +18,7 @@
             pkgs.cmake
             pkgs.bison
             pkgs.flex
+            pkgs.valgrind
           ];
 
           buildInputs = [
