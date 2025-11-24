@@ -17,7 +17,6 @@ You should have received a copy of the GNU General Public License
 along with GCC; see the file COPYING3.  If not see
 <http://www.gnu.org/licenses/>.  */
 
-#include <omp.h>
 #include <libgccjit.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -33,20 +32,25 @@ static void create_code(gcc_jit_context *ctxt) {
   */
 
   gcc_jit_type *void_type = gcc_jit_context_get_type(ctxt, GCC_JIT_TYPE_VOID);
+
   gcc_jit_type *const_char_ptr_type =
       gcc_jit_context_get_type(ctxt, GCC_JIT_TYPE_CONST_CHAR_PTR);
+
   gcc_jit_param *param_name =
       gcc_jit_context_new_param(ctxt, NULL, const_char_ptr_type, "name");
+
   gcc_jit_function *func =
       gcc_jit_context_new_function(ctxt, NULL, GCC_JIT_FUNCTION_EXPORTED,
                                    void_type, "greet", 1, &param_name, 0);
 
   gcc_jit_param *param_format =
       gcc_jit_context_new_param(ctxt, NULL, const_char_ptr_type, "format");
+
   gcc_jit_function *printf_func = gcc_jit_context_new_function(
       ctxt, NULL, GCC_JIT_FUNCTION_IMPORTED,
       gcc_jit_context_get_type(ctxt, GCC_JIT_TYPE_INT), "printf", 1,
       &param_format, 1);
+
   gcc_jit_rvalue *args[2];
   args[0] = gcc_jit_context_new_string_literal(ctxt, "hello %s\n");
   args[1] = gcc_jit_param_as_rvalue(param_name);

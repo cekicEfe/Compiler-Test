@@ -39,19 +39,3 @@ ATOM [a-zA-Z\+\-\*\/\?\&\%\#\^\|\\\$\=\{\}\@]
 //"/"		   {printf("Found dash"    );return T_DIVIDE;   }
 
 int yywrap(){}
-
-int main(){
-  
-  // Uncomment the lines below 
-  // to take input from file
-  // FILE *fp;
-  // char filename[50];
-  // printf("Enter the filename: \n");
-  // scanf("%s",filename);
-  // fp = fopen(filename,"r");
-  // yyin = fp;
-  
-  yylex();
-  
-  return 0;
-}
