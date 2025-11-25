@@ -2,6 +2,7 @@
 # To find the cmake version run
 # $ cmake --version
 cmake_minimum_required(VERSION 3.30)
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set the project name
 project (HALE_LISP_MAIN)

@@ -20,12 +20,12 @@ struct GC {
   GC_HEAP mpHeap;
 } typedef GC;
 
-int GC_INIT();
-int GC_CLEANUP();
-int GC_EXIT();
+int GC_INIT(GC *gc);
+int GC_CLEANUP(GC *gc);
+int GC_DESTRUCT(GC *gc);
 
-void *GC_ALLOCATE(size_t size);
-void *GC_MALLOC(size_t size);
-void GC_FREE(void *ptr);
+void *GC_ALLOCATE(GC *gc, size_t size);
+void *GC_MALLOC(GC *gc, size_t size);
+void GC_FREE(GC *gc, void *ptr);
 
 #endif
