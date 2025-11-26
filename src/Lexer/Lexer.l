@@ -1,9 +1,6 @@
-%option noyywrap
-
 %{
 
 #include <stdio.h>
-#define YY_DECL int yylex()
 #include "Parser.tab.h"
 
 %}
@@ -21,7 +18,7 @@ ATOM [a-zA-Z\+\-\*\/\?\&\%\#\^\|\\\$\=\{\}\@]
                                                  printf("Found float : %s ",yytext);
                                                  return T_FLOAT;}
 
-[ATOM]+                                         {return T_ID;}
+[ATOM]+                                         {return SYMBOL;}
 
 [0-9]+ {yylval.ival = atoi(yytext);
         printf("Found float : %s ",yytext);

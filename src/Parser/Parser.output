@@ -1,0 +1,129 @@
+Grammar
+
+    0 $accept: input $end
+
+    1 input: ε
+    2      | s_exp input
+
+    3 s_exp: L_PARAN s_exp_list R_PARAN
+
+    4 s_exp_list: SYMBOL
+    5           | s_exp_list SYMBOL
+    6           | s_exp
+
+
+Terminals, with rules where they appear
+
+    $end (0) 0
+    error (256)
+    L_PARAN (258) 3
+    R_PARAN (259) 3
+    SYMBOL (260) 4 5
+
+
+Nonterminals, with rules where they appear
+
+    $accept (6)
+        on left: 0
+    input (7)
+        on left: 1 2
+        on right: 0 2
+    s_exp (8)
+        on left: 3
+        on right: 2 6
+    s_exp_list (9)
+        on left: 4 5 6
+        on right: 3 5
+
+
+State 0
+
+    0 $accept: • input $end
+
+    L_PARAN  shift, and go to state 1
+
+    $default  reduce using rule 1 (input)
+
+    input  go to state 2
+    s_exp  go to state 3
+
+
+State 1
+
+    3 s_exp: L_PARAN • s_exp_list R_PARAN
+
+    L_PARAN  shift, and go to state 1
+    SYMBOL   shift, and go to state 4
+
+    s_exp       go to state 5
+    s_exp_list  go to state 6
+
+
+State 2
+
+    0 $accept: input • $end
+
+    $end  shift, and go to state 7
+
+
+State 3
+
+    2 input: s_exp • input
+
+    L_PARAN  shift, and go to state 1
+
+    $default  reduce using rule 1 (input)
+
+    input  go to state 8
+    s_exp  go to state 3
+
+
+State 4
+
+    4 s_exp_list: SYMBOL •
+
+    $default  reduce using rule 4 (s_exp_list)
+
+
+State 5
+
+    6 s_exp_list: s_exp •
+
+    $default  reduce using rule 6 (s_exp_list)
+
+
+State 6
+
+    3 s_exp: L_PARAN s_exp_list • R_PARAN
+    5 s_exp_list: s_exp_list • SYMBOL
+
+    R_PARAN  shift, and go to state 9
+    SYMBOL   shift, and go to state 10
+
+
+State 7
+
+    0 $accept: input $end •
+
+    $default  accept
+
+
+State 8
+
+    2 input: s_exp input •
+
+    $default  reduce using rule 2 (input)
+
+
+State 9
+
+    3 s_exp: L_PARAN s_exp_list R_PARAN •
+
+    $default  reduce using rule 3 (s_exp)
+
+
+State 10
+
+    5 s_exp_list: s_exp_list SYMBOL •
+
+    $default  reduce using rule 5 (s_exp_list)
