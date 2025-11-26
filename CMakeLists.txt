@@ -10,6 +10,9 @@ project (HALE_LISP_MAIN)
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
     src/main.cpp
+    src/Parser/Parser.tab.c
+    src/Parser/Parser.tab.h
+    src/Lexer/lex.yy.c
 )
 
 # Add an executable with the above sources
