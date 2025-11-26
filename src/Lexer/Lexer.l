@@ -48,5 +48,4 @@ ATOM [a-zA-Z\+\-\*\/\?\&\%\#\^\|\\\$\=\{\}\@]
 //"*"		   {printf("Found \*"      );return T_MULTIPLY; }
 //"/"		   {printf("Found dash"    );return T_DIVIDE;   }
 
-
-; int yywrap(){}
+int yywrap(){}

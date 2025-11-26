@@ -1814,6 +1814,5 @@ void yyfree (void * ptr )
 //"*"		   {printf("Found \*"      );return T_MULTIPLY; }
 //"/"		   {printf("Found dash"    );return T_DIVIDE;   }
 
-
-; int yywrap(){}
+int yywrap(){}
 
