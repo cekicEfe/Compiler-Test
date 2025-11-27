@@ -1091,7 +1091,7 @@ yyreduce:
 
   case 7: /* s_exp_list: id s_exp_list  */
 #line 37 "Parser.y"
-                  {printf("Found id s_exp list \n");}
+                   {printf("Found id s_exp list \n");}
 #line 1096 "Parser.tab.c"
     break;
 

@@ -21,6 +21,7 @@ add_executable(TEST_LISP_MAIN ${SOURCES})
 
 target_link_libraries(TEST_LISP_MAIN
     gccjit
+    gc
     )
 
 target_include_directories(TEST_LISP_MAIN

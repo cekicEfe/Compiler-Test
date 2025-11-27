@@ -22,9 +22,9 @@ void yyerror(char *ps, ...);
 [-+]?[0-9]+\.[0-9]+([eE][+-]?[0-9]*)? {printf("Found : FLOAT \n");
                                        return T_FLOAT;}
 
-[a-zA-Z][a-zA-Z0-9_\-*+?^%=!]*   {printf("Found : ATOM \n");return T_ATOM; }
-'[a-zA-Z][a-zA-Z0-9_\-*+?^%=!]*  {printf("Found : SYMBOL \n");return T_SYMBOL;}
-#:[a-zA-Z][a-zA-Z0-9_\-*+?^%=!]* {printf("Found : KEYWORD \n");return T_KEYWORD;}
+[a-zA-Z_\-*+?^%=!]+[0-9]*   {printf("Found : ATOM \n");return T_ATOM; }
+'[a-zA-Z_\-*+?^%=!]+[0-9]*  {printf("Found : SYMBOL \n");return T_SYMBOL;}
+#:[a-zA-Z_\-*+?^%=!]+[0-9]* {printf("Found : KEYWORD \n");return T_KEYWORD;}
 
 "("		      {printf("Found : LP \n");return T_L_PARAN;}
 ")"		      {printf("Found : RP \n");return T_R_PARAN;}
