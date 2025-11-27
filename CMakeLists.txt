@@ -9,9 +9,10 @@ project (HALE_LISP_MAIN)
 
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
-    src/main.cpp
-    src/Parser/Parser.tab.c
+    src/main.c
     src/Parser/Parser.tab.h
+
+    src/Parser/Parser.tab.c
     src/Lexer/lex.yy.c
 )
 
@@ -22,9 +23,8 @@ target_link_libraries(HALE_LISP_MAIN
     gccjit
     )
 
-# Set the directories that should be included in the build command for this target
-# when running g++ these will be included as -I/directory/path/
-# target_include_directories(HALE_LISP_MAIN
-#     PRIVATE 
-#         ${PROJECT_SOURCE_DIR}/include
-# )
+target_include_directories(HALE_LISP_MAIN
+    PRIVATE 
+        ${PROJECT_SOURCE_DIR}/src/Parser
+        ${PROJECT_SOURCE_DIR}/src/Lexer
+)

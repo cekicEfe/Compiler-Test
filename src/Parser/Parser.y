@@ -2,37 +2,40 @@
 
 #include <stdio.h>
 
+void yyerror(char *ps, ...) {
+  printf("%s <<- \n", ps);
+}
+
+int yylex();
+
 %}
 
 %token T_L_PARAN T_R_PARAN
-%token T_ATOM T_KEYWORD T_SYMBOL
+%token T_ATOM T_KEYWORD T_SYMBOL T_NIL
 %token T_FALSE T_TRUE
-%token T_QUOTED
 
 %%
 
 input:
-  %empty
-| s_exp input {printf("input");}
+| sexp input
 ;
 
-s_exp:
-  T_L_PARAN s_exp_list T_R_PARAN {printf("s_exp");}
+sexp:
+  T_L_PARAN sexp_list T_R_PARAN {printf("Found sexp(s) in sexp \n");}
 ;
 
-s_exp_list:
-  id
-| s_exp_list id      {printf("s_exp_list");}
-| s_exp              {printf("???");}
+sexp_list:
+| sexp sexp_list {printf("Found sexp in sexp list \n");}
+| id sexp_list   {printf("Found id sexp list \n");}
 ;
 
 id:
-  T_ATOM
-| T_SYMBOL
-| T_KEYWORD
-| T_QUOTED
-| T_FALSE
+  T_FALSE
 | T_TRUE
+| T_KEYWORD
+| T_SYMBOL
+| T_ATOM
+| T_NIL
 ;
-	
+
 %%

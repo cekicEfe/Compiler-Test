@@ -1,32 +1,33 @@
 %{
 
 #include <stdio.h>
-#include "src/Parser/Parser.tab.h"
+#include "Parser.tab.h"
+
+void yyerror(char *ps, ...);
 
 %}
 
-ATOM [a-zA-Z\+\-\*\/\?\&\%\#\^\|\\\$\=\{\}\@]
 
 %%
 
 
-"#:T"   {return T_TRUE; }
-"#:F"   {return T_FALSE;}
+"#:T"       {printf("Found : T \n");return T_TRUE; }
+"#:F"       {printf("Found : F \n");return T_FALSE;}
 
-"#:t"   {return T_TRUE; }
-"#:f"   {return T_FALSE;}
+"#:t"       {printf("Found : T \n");return T_TRUE; }
+"#:f"       {printf("Found : F \n");return T_FALSE;}
 
+[a-zA-Z0-9_+?]+   {printf("Found : ATOM \n");return T_ATOM; }
+'[a-zA-Z0-9_+?]+  {printf("Found : SYMBOL \n");return T_SYMBOL;}
+#:[a-zA-Z0-9_+?]+ {printf("Found : KEYWORD \n");return T_KEYWORD;}
 
-[ \t\n]	; // ignore all whitespace
+"("		      {printf("Found : LP \n");return T_L_PARAN;}
+")"		      {printf("Found : RP \n");return T_R_PARAN;}
+"()"        {printf("Found : NIL \n");return T_NIL;}
 
-
-[ATOM]+                             {return T_ATOM;    }
-\'[ATOM]+                           {return T_SYMBOL;  }
-\#\:[ATOM]+                         {return T_KEYWORD; }
-
-
-"("		     {printf("Found \("      );return T_L_PARAN; }
-")"		     {printf("Found \)"      );return T_R_PARAN; }
+[ \t] ; // ignore all whitespace
+[\n]  ;
+.           {yyerror("Unknown Token");return YYerror;} 
 
 
 %%
@@ -42,10 +43,14 @@ ATOM [a-zA-Z\+\-\*\/\?\&\%\#\^\|\\\$\=\{\}\@]
 //                                                 return T_FLOAT;}
 
 
-//\n		   {printf("Found new line");return T_NEWLINE;  }
-//"+"		   {printf("Found \+"      );return T_PLUS;     }
-//"-"		   {printf("Found \-"      );return T_MINUS;    }
-//"*"		   {printf("Found \*"      );return T_MULTIPLY; }
-//"/"		   {printf("Found dash"    );return T_DIVIDE;   }
+//\n		   {return T_NEWLINE;  }
+//"+"		   {return T_PLUS;     }
+//"-"		   {return T_MINUS;    }
+//"*"		   {return T_MULTIPLY; }
+//"/"		   {return T_DIVIDE;   }
 
-int yywrap(){}
+
+int yywrap() {
+  return 1;
+}
+  

@@ -59,9 +59,9 @@ extern int yydebug;
     T_ATOM = 260,                  /* T_ATOM  */
     T_KEYWORD = 261,               /* T_KEYWORD  */
     T_SYMBOL = 262,                /* T_SYMBOL  */
-    T_FALSE = 263,                 /* T_FALSE  */
-    T_TRUE = 264,                  /* T_TRUE  */
-    T_QUOTED = 265                 /* T_QUOTED  */
+    T_NIL = 263,                   /* T_NIL  */
+    T_FALSE = 264,                 /* T_FALSE  */
+    T_TRUE = 265                   /* T_TRUE  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
