@@ -19,10 +19,14 @@ along with GCC; see the file COPYING3.  If not see
 
 #include <libgccjit.h>
 #include "Parser.tab.h"
+#include "gc/gc.h"
 #include <stdio.h>
 #include <stdlib.h>
 
+
 int main(int argc, char **argv) {
+  GC_INIT();
+  GC_enable_incremental();
 
   yyparse();
 

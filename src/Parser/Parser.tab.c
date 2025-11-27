@@ -122,8 +122,8 @@ enum yysymbol_kind_t
   YYSYMBOL_T_INT = 12,                     /* T_INT  */
   YYSYMBOL_YYACCEPT = 13,                  /* $accept  */
   YYSYMBOL_input = 14,                     /* input  */
-  YYSYMBOL_sexp = 15,                      /* sexp  */
-  YYSYMBOL_sexp_list = 16,                 /* sexp_list  */
+  YYSYMBOL_s_exp = 15,                     /* s_exp  */
+  YYSYMBOL_s_exp_list = 16,                /* s_exp_list  */
   YYSYMBOL_id = 17                         /* id  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
@@ -511,8 +511,8 @@ static const yytype_int8 yytranslate[] =
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    19,    19,    20,    24,    27,    28,    29,    33,    34,
-      35,    36,    37,    38,    39,    40
+       0,    27,    27,    28,    32,    35,    36,    37,    41,    42,
+      43,    44,    45,    46,    47,    48
 };
 #endif
 
@@ -530,7 +530,7 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "T_L_PARAN",
   "T_R_PARAN", "T_ATOM", "T_KEYWORD", "T_SYMBOL", "T_NIL", "T_FALSE",
-  "T_TRUE", "T_FLOAT", "T_INT", "$accept", "input", "sexp", "sexp_list",
+  "T_TRUE", "T_FLOAT", "T_INT", "$accept", "input", "s_exp", "s_exp_list",
   "id", YY_NULLPTR
 };
 
@@ -1077,26 +1077,74 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 4: /* sexp: T_L_PARAN sexp_list T_R_PARAN  */
-#line 24 "Parser.y"
-                                {}
+  case 4: /* s_exp: T_L_PARAN s_exp_list T_R_PARAN  */
+#line 32 "Parser.y"
+                                 {}
 #line 1084 "Parser.tab.c"
     break;
 
-  case 6: /* sexp_list: sexp sexp_list  */
-#line 28 "Parser.y"
-                 {printf("Found sexp in sexp list \n");}
+  case 6: /* s_exp_list: s_exp s_exp_list  */
+#line 36 "Parser.y"
+                   {printf("Found s_exp in s_exp list \n");}
 #line 1090 "Parser.tab.c"
     break;
 
-  case 7: /* sexp_list: id sexp_list  */
-#line 29 "Parser.y"
-                 {printf("Found id sexp list \n");}
+  case 7: /* s_exp_list: id s_exp_list  */
+#line 37 "Parser.y"
+                  {printf("Found id s_exp list \n");}
 #line 1096 "Parser.tab.c"
     break;
 
+  case 8: /* id: T_FALSE  */
+#line 41 "Parser.y"
+             {}
+#line 1102 "Parser.tab.c"
+    break;
 
-#line 1100 "Parser.tab.c"
+  case 9: /* id: T_TRUE  */
+#line 42 "Parser.y"
+             {}
+#line 1108 "Parser.tab.c"
+    break;
+
+  case 10: /* id: T_INT  */
+#line 43 "Parser.y"
+             {}
+#line 1114 "Parser.tab.c"
+    break;
+
+  case 11: /* id: T_FLOAT  */
+#line 44 "Parser.y"
+             {}
+#line 1120 "Parser.tab.c"
+    break;
+
+  case 12: /* id: T_KEYWORD  */
+#line 45 "Parser.y"
+             {}
+#line 1126 "Parser.tab.c"
+    break;
+
+  case 13: /* id: T_SYMBOL  */
+#line 46 "Parser.y"
+             {}
+#line 1132 "Parser.tab.c"
+    break;
+
+  case 14: /* id: T_ATOM  */
+#line 47 "Parser.y"
+             {}
+#line 1138 "Parser.tab.c"
+    break;
+
+  case 15: /* id: T_NIL  */
+#line 48 "Parser.y"
+             {}
+#line 1144 "Parser.tab.c"
+    break;
+
+
+#line 1148 "Parser.tab.c"
 
       default: break;
     }
@@ -1289,5 +1337,5 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 43 "Parser.y"
+#line 51 "Parser.y"
 

@@ -7,7 +7,6 @@ void yyerror(char *ps, ...);
 
 %}
 
-
 %%
 
 
@@ -17,8 +16,8 @@ void yyerror(char *ps, ...);
 "#:t"       {printf("Found : T \n");return T_TRUE; }
 "#:f"       {printf("Found : F \n");return T_FALSE;}
 
-[0-9]+ {printf("Found : INTEGER \n");
-        return T_INT;}
+[0-9]+      {printf("Found : INTEGER \n");
+             return T_INT;}
 
 [-+]?[0-9]+\.[0-9]+([eE][+-]?[0-9]*)? {printf("Found : FLOAT \n");
                                        return T_FLOAT;}
@@ -29,7 +28,7 @@ void yyerror(char *ps, ...);
 
 "("		      {printf("Found : LP \n");return T_L_PARAN;}
 ")"		      {printf("Found : RP \n");return T_R_PARAN;}
-"'()"        {printf("Found : NIL \n");return T_NIL;}
+"'()"       {printf("Found : NIL \n");return T_NIL;}
 
 [ \t] ; // ignore all whitespace
 [\n]  ;

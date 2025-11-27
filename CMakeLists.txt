@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.30)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set the project name
-project (HALE_LISP_MAIN)
+project (TEST_LISP_MAIN)
 
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
@@ -17,13 +17,13 @@ set(SOURCES
 )
 
 # Add an executable with the above sources
-add_executable(HALE_LISP_MAIN ${SOURCES})
+add_executable(TEST_LISP_MAIN ${SOURCES})
 
-target_link_libraries(HALE_LISP_MAIN
+target_link_libraries(TEST_LISP_MAIN
     gccjit
     )
 
-target_include_directories(HALE_LISP_MAIN
+target_include_directories(TEST_LISP_MAIN
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/src/Parser
         ${PROJECT_SOURCE_DIR}/src/Lexer
