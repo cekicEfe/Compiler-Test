@@ -61,7 +61,9 @@ extern int yydebug;
     T_SYMBOL = 262,                /* T_SYMBOL  */
     T_NIL = 263,                   /* T_NIL  */
     T_FALSE = 264,                 /* T_FALSE  */
-    T_TRUE = 265                   /* T_TRUE  */
+    T_TRUE = 265,                  /* T_TRUE  */
+    T_FLOAT = 266,                 /* T_FLOAT  */
+    T_INT = 267                    /* T_INT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif

@@ -17,13 +17,19 @@ void yyerror(char *ps, ...);
 "#:t"       {printf("Found : T \n");return T_TRUE; }
 "#:f"       {printf("Found : F \n");return T_FALSE;}
 
-[a-zA-Z0-9_+?]+   {printf("Found : ATOM \n");return T_ATOM; }
-'[a-zA-Z0-9_+?]+  {printf("Found : SYMBOL \n");return T_SYMBOL;}
-#:[a-zA-Z0-9_+?]+ {printf("Found : KEYWORD \n");return T_KEYWORD;}
+[0-9]+ {printf("Found : INTEGER \n");
+        return T_INT;}
+
+[-+]?[0-9]+\.[0-9]+([eE][+-]?[0-9]*)? {printf("Found : FLOAT \n");
+                                       return T_FLOAT;}
+
+[a-zA-Z][a-zA-Z0-9_\-*+?^%=!]*   {printf("Found : ATOM \n");return T_ATOM; }
+'[a-zA-Z][a-zA-Z0-9_\-*+?^%=!]*  {printf("Found : SYMBOL \n");return T_SYMBOL;}
+#:[a-zA-Z][a-zA-Z0-9_\-*+?^%=!]* {printf("Found : KEYWORD \n");return T_KEYWORD;}
 
 "("		      {printf("Found : LP \n");return T_L_PARAN;}
 ")"		      {printf("Found : RP \n");return T_R_PARAN;}
-"()"        {printf("Found : NIL \n");return T_NIL;}
+"'()"        {printf("Found : NIL \n");return T_NIL;}
 
 [ \t] ; // ignore all whitespace
 [\n]  ;
@@ -31,23 +37,6 @@ void yyerror(char *ps, ...);
 
 
 %%
-
-
-//[0-9]+ {yylval.ival = atoi(yytext);
-//        printf("Found float : %s ",yytext);
-//        return T_INT;}
-
-
-//[0-9]*([0-9]\.?|\.[0-9])[0-9]*([Ee][-+]?[0-9]+) {yylval.fval = atof(yytext);
-//                                                 printf("Found float : %s ",yytext);
-//                                                 return T_FLOAT;}
-
-
-//\n		   {return T_NEWLINE;  }
-//"+"		   {return T_PLUS;     }
-//"-"		   {return T_MINUS;    }
-//"*"		   {return T_MULTIPLY; }
-//"/"		   {return T_DIVIDE;   }
 
 
 int yywrap() {

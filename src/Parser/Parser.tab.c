@@ -118,11 +118,13 @@ enum yysymbol_kind_t
   YYSYMBOL_T_NIL = 8,                      /* T_NIL  */
   YYSYMBOL_T_FALSE = 9,                    /* T_FALSE  */
   YYSYMBOL_T_TRUE = 10,                    /* T_TRUE  */
-  YYSYMBOL_YYACCEPT = 11,                  /* $accept  */
-  YYSYMBOL_input = 12,                     /* input  */
-  YYSYMBOL_sexp = 13,                      /* sexp  */
-  YYSYMBOL_sexp_list = 14,                 /* sexp_list  */
-  YYSYMBOL_id = 15                         /* id  */
+  YYSYMBOL_T_FLOAT = 11,                   /* T_FLOAT  */
+  YYSYMBOL_T_INT = 12,                     /* T_INT  */
+  YYSYMBOL_YYACCEPT = 13,                  /* $accept  */
+  YYSYMBOL_input = 14,                     /* input  */
+  YYSYMBOL_sexp = 15,                      /* sexp  */
+  YYSYMBOL_sexp_list = 16,                 /* sexp_list  */
+  YYSYMBOL_id = 17                         /* id  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -448,21 +450,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  13
+#define YYFINAL  15
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   15
+#define YYLAST   17
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  11
+#define YYNTOKENS  13
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  13
+#define YYNRULES  15
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  18
+#define YYNSTATES  20
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   265
+#define YYMAXUTOK   267
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -502,7 +504,7 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10
+       5,     6,     7,     8,     9,    10,    11,    12
 };
 
 #if YYDEBUG
@@ -510,7 +512,7 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int8 yyrline[] =
 {
        0,    19,    19,    20,    24,    27,    28,    29,    33,    34,
-      35,    36,    37,    38
+      35,    36,    37,    38,    39,    40
 };
 #endif
 
@@ -528,7 +530,8 @@ static const char *const yytname[] =
 {
   "\"end of file\"", "error", "\"invalid token\"", "T_L_PARAN",
   "T_R_PARAN", "T_ATOM", "T_KEYWORD", "T_SYMBOL", "T_NIL", "T_FALSE",
-  "T_TRUE", "$accept", "input", "sexp", "sexp_list", "id", YY_NULLPTR
+  "T_TRUE", "T_FLOAT", "T_INT", "$accept", "input", "sexp", "sexp_list",
+  "id", YY_NULLPTR
 };
 
 static const char *
@@ -552,8 +555,8 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -2,    -3,     9,    -2,    -4,    -4,    -4,    -4,    -4,    -4,
-      -3,    10,    -3,    -4,    -4,    -4,    -4,    -4
+      -2,    -3,    11,    -2,    -4,    -4,    -4,    -4,    -4,    -4,
+      -4,    -4,    -3,    12,    -3,    -4,    -4,    -4,    -4,    -4
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -561,20 +564,20 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     5,     0,     2,    12,    10,    11,    13,     8,     9,
-       5,     0,     5,     1,     3,     6,     4,     7
+       2,     5,     0,     2,    14,    12,    13,    15,     8,     9,
+      11,    10,     5,     0,     5,     1,     3,     6,     4,     7
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    12,     8,     0,    -4
+      -4,    14,    10,     0,    -4
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     2,    10,    11,    12
+       0,     2,    12,    13,    14
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -582,36 +585,36 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     1,     4,     5,     6,     7,     8,     9,     3,    13,
-      15,     3,    17,     0,    16,    14
+       1,     1,     4,     5,     6,     7,     8,     9,    10,    11,
+       3,    15,    17,     3,    19,     0,    18,    16
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     3,     5,     6,     7,     8,     9,    10,     0,     0,
-      10,     3,    12,    -1,     4,     3
+       3,     3,     5,     6,     7,     8,     9,    10,    11,    12,
+       0,     0,    12,     3,    14,    -1,     4,     3
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,    12,    13,     5,     6,     7,     8,     9,    10,
-      13,    14,    15,     0,    12,    14,     4,    14
+       0,     3,    14,    15,     5,     6,     7,     8,     9,    10,
+      11,    12,    15,    16,    17,     0,    14,    16,     4,    16
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    11,    12,    12,    13,    14,    14,    14,    15,    15,
-      15,    15,    15,    15
+       0,    13,    14,    14,    15,    16,    16,    16,    17,    17,
+      17,    17,    17,    17,    17,    17
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
        0,     2,     0,     2,     3,     0,     2,     2,     1,     1,
-       1,     1,     1,     1
+       1,     1,     1,     1,     1,     1
 };
 
 
@@ -1076,24 +1079,24 @@ yyreduce:
     {
   case 4: /* sexp: T_L_PARAN sexp_list T_R_PARAN  */
 #line 24 "Parser.y"
-                                {printf("Found sexp(s) in sexp \n");}
-#line 1081 "Parser.tab.c"
+                                {}
+#line 1084 "Parser.tab.c"
     break;
 
   case 6: /* sexp_list: sexp sexp_list  */
 #line 28 "Parser.y"
                  {printf("Found sexp in sexp list \n");}
-#line 1087 "Parser.tab.c"
+#line 1090 "Parser.tab.c"
     break;
 
   case 7: /* sexp_list: id sexp_list  */
 #line 29 "Parser.y"
                  {printf("Found id sexp list \n");}
-#line 1093 "Parser.tab.c"
+#line 1096 "Parser.tab.c"
     break;
 
 
-#line 1097 "Parser.tab.c"
+#line 1100 "Parser.tab.c"
 
       default: break;
     }
@@ -1286,5 +1289,5 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 41 "Parser.y"
+#line 43 "Parser.y"
 

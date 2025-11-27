@@ -13,7 +13,7 @@ int yylex();
 %token T_L_PARAN T_R_PARAN
 %token T_ATOM T_KEYWORD T_SYMBOL T_NIL
 %token T_FALSE T_TRUE
-
+%token T_FLOAT T_INT
 %%
 
 input:
@@ -21,7 +21,7 @@ input:
 ;
 
 sexp:
-  T_L_PARAN sexp_list T_R_PARAN {printf("Found sexp(s) in sexp \n");}
+  T_L_PARAN sexp_list T_R_PARAN {}
 ;
 
 sexp_list:
@@ -32,6 +32,8 @@ sexp_list:
 id:
   T_FALSE
 | T_TRUE
+| T_INT
+| T_FLOAT
 | T_KEYWORD
 | T_SYMBOL
 | T_ATOM
