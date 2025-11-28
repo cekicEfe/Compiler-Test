@@ -36,6 +36,7 @@
           buildInputs = [
             #
             bdwgc
+            pkgs.libuv
             pkgs.libgcc
             pkgs.glibc
             pkgs.glibc.dev
@@ -46,6 +47,7 @@
           LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath [
             #
             bdwgc
+            pkgs.libuv
             pkgs.libgcc
             pkgs.glibc.dev
             pkgs.glibc
