@@ -30,6 +30,10 @@ struct symbol {
   size_t symbol_type;
 } typedef symbol;
 
+extern symbol* create_symbol(const char *const str,const size_t str_len,const size_t type);
+extern void destroy_symbol(symbol* symbol);
+extern int copy_symbol(const symbol *const src,symbol* dest);
+
 struct symbol_table_node {
   int in_use;
   symbol symbol;
@@ -42,5 +46,11 @@ struct symbol_table {
 } typedef symbol_table;
 
 
+extern symbol_table* create_symbol_table(size_t bucket_size);
+extern void destroy_symbol_table(symbol_table* table);
+extern int add_to_symbol_table(symbol_table* table,symbol* symbol);
+
+extern void remove_symbol_from_symbol_table(symbol_table* table,symbol* symbol);
+extern int check_symbol_from_symbol_table(symbol_table* table,symbol* symbol);
 
 #endif
