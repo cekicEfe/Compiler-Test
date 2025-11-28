@@ -23,8 +23,8 @@ along with GCC; see the file COPYING3.  If not see
 #include <stdlib.h>
 
 int main(int argc, char **argv) {
-  GC_INIT();
   GC_enable_incremental();
+  GC_INIT();
 
   yyparse();
 
