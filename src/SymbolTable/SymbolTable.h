@@ -30,25 +30,6 @@ struct symbol {
   size_t symbol_type;
 } typedef symbol;
 
-/*
-  Create symbol with given str and type
-  Returns NULL if memory allocations fail
-*/
-extern symbol *create_symbol(const char *const str, const size_t str_len,
-                             const size_t type);
-
-/*
-  Safely frees the symbol and its resources
-*/
-extern void destroy_symbol(symbol *symbol);
-
-/*
-  Copies current symbol to dest
-  Returns 0 if succeeds
-  Returns 1 if any memory allocation fails
-*/
-extern int copy_symbol(const symbol *const src, symbol *dest);
-
 struct symbol_table_node {
   int in_use;
   symbol symbol;
@@ -59,16 +40,5 @@ struct symbol_table {
   int bucket_count;
   symbol_table_node *key_values;
 } typedef symbol_table;
-
-extern symbol_table *create_symbol_table(size_t bucket_size);
-
-extern void destroy_symbol_table(symbol_table *table);
-
-extern int add_to_table(symbol_table *table, symbol *symbol);
-
-extern void remove_from_table(symbol_table *table,
-                                            symbol *symbol);
-
-extern int check_from_table(symbol_table *table, symbol *symbol);
 
 #endif
