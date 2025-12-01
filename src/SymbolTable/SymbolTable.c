@@ -50,9 +50,21 @@ int copy_symbol(const symbol *const src, symbol *dest) {
   return 0;
 }
 
-symbol_table *create_symbol_table(size_t bucket_size);
-void destroy_symbol_table(symbol_table *table);
-int add_to_symbol_table(symbol_table *table, symbol *symbol);
+/*
+  Creates symbol table with given bucket size.
+  Bucket size must be greater than 0 since its
+  taken as unsigned value 
+*/
+symbol_table *create_symbol_table(size_t bucket_size){
+  symbol_table *table = (symbol_table*)malloc(sizeof(symbol_table));
+  if (table != NULL) {
+    
+  }
+  return table;
+}
 
-void remove_symbol_from_symbol_table(symbol_table *table, symbol *symbol);
-int check_symbol_from_symbol_table(symbol_table *table, symbol *symbol);
+void destroy_symbol_table(symbol_table *table);
+int add_to_table(symbol_table *table, symbol *symbol);
+
+void remove_from_table(symbol_table *table, symbol *symbol);
+int check_from_table(symbol_table *table, symbol *symbol);

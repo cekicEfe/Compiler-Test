@@ -64,11 +64,11 @@ extern symbol_table *create_symbol_table(size_t bucket_size);
 
 extern void destroy_symbol_table(symbol_table *table);
 
-extern int add_to_symbol_table(symbol_table *table, symbol *symbol);
+extern int add_to_table(symbol_table *table, symbol *symbol);
 
-extern void remove_symbol_from_symbol_table(symbol_table *table,
+extern void remove_from_table(symbol_table *table,
                                             symbol *symbol);
 
-extern int check_symbol_from_symbol_table(symbol_table *table, symbol *symbol);
+extern int check_from_table(symbol_table *table, symbol *symbol);
 
 #endif

@@ -10,7 +10,8 @@ int yylex();
 
 %}
 
-%token T_L_PARAN T_R_PARAN
+%token T_L_PAREN1 T_R_PAREN1
+%token T_L_PAREN2 T_R_PAREN2
 %token T_ATOM T_KEYWORD T_SYMBOL T_NIL
 %token T_FALSE T_TRUE
 %token <float> T_FLOAT
@@ -29,7 +30,8 @@ input:
 ;
 
 s_exp:
-  T_L_PARAN s_exp_list T_R_PARAN {}
+  T_L_PAREN1 s_exp_list T_R_PAREN1 {}
+| T_L_PAREN2 s_exp_list T_R_PAREN2 {}
 ;
 
 s_exp_list:

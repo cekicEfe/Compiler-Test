@@ -54,16 +54,18 @@ extern int yydebug;
     YYEOF = 0,                     /* "end of file"  */
     YYerror = 256,                 /* error  */
     YYUNDEF = 257,                 /* "invalid token"  */
-    T_L_PARAN = 258,               /* T_L_PARAN  */
-    T_R_PARAN = 259,               /* T_R_PARAN  */
-    T_ATOM = 260,                  /* T_ATOM  */
-    T_KEYWORD = 261,               /* T_KEYWORD  */
-    T_SYMBOL = 262,                /* T_SYMBOL  */
-    T_NIL = 263,                   /* T_NIL  */
-    T_FALSE = 264,                 /* T_FALSE  */
-    T_TRUE = 265,                  /* T_TRUE  */
-    T_FLOAT = 266,                 /* T_FLOAT  */
-    T_INT = 267                    /* T_INT  */
+    T_L_PAREN1 = 258,              /* T_L_PAREN1  */
+    T_R_PAREN1 = 259,              /* T_R_PAREN1  */
+    T_L_PAREN2 = 260,              /* T_L_PAREN2  */
+    T_R_PAREN2 = 261,              /* T_R_PAREN2  */
+    T_ATOM = 262,                  /* T_ATOM  */
+    T_KEYWORD = 263,               /* T_KEYWORD  */
+    T_SYMBOL = 264,                /* T_SYMBOL  */
+    T_NIL = 265,                   /* T_NIL  */
+    T_FALSE = 266,                 /* T_FALSE  */
+    T_TRUE = 267,                  /* T_TRUE  */
+    T_FLOAT = 268,                 /* T_FLOAT  */
+    T_INT = 269                    /* T_INT  */
   };
   typedef enum yytokentype yytoken_kind_t;
 #endif
@@ -72,13 +74,13 @@ extern int yydebug;
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 19 "Parser.y"
+#line 20 "Parser.y"
 
   int num;
   float f;
   int bool;
 
-#line 82 "Parser.tab.h"
+#line 84 "Parser.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

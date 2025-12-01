@@ -26,9 +26,13 @@ void yyerror(char *ps, ...);
 '[a-zA-Z_\-*+?^%=!]+[0-9]*  {printf("Found : SYMBOL \n");return T_SYMBOL;}
 #:[a-zA-Z_\-*+?^%=!]+[0-9]* {printf("Found : KEYWORD \n");return T_KEYWORD;}
 
-"("		      {printf("Found : LP \n");return T_L_PARAN;}
-")"		      {printf("Found : RP \n");return T_R_PARAN;}
-"'()"       {printf("Found : NIL \n");return T_NIL;}
+"("		     {printf("Found : LP_1 \n");return T_L_PAREN1;}
+")"		     {printf("Found : RP_1 \n");return T_R_PAREN1;}
+"()"       {printf("Found : NIL_1 \n");return T_NIL;}
+
+"["  {printf("Found : LP_2 \n");return T_L_PAREN2;}
+"]"  {printf("Found : RP_2 \n");return T_R_PAREN2;}
+"[]" {printf("Found : NIL_2 \n");return T_NIL;}
 
 [ \t] ; // ignore all whitespace
 [\n]  ;

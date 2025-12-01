@@ -110,21 +110,23 @@ enum yysymbol_kind_t
   YYSYMBOL_YYEOF = 0,                      /* "end of file"  */
   YYSYMBOL_YYerror = 1,                    /* error  */
   YYSYMBOL_YYUNDEF = 2,                    /* "invalid token"  */
-  YYSYMBOL_T_L_PARAN = 3,                  /* T_L_PARAN  */
-  YYSYMBOL_T_R_PARAN = 4,                  /* T_R_PARAN  */
-  YYSYMBOL_T_ATOM = 5,                     /* T_ATOM  */
-  YYSYMBOL_T_KEYWORD = 6,                  /* T_KEYWORD  */
-  YYSYMBOL_T_SYMBOL = 7,                   /* T_SYMBOL  */
-  YYSYMBOL_T_NIL = 8,                      /* T_NIL  */
-  YYSYMBOL_T_FALSE = 9,                    /* T_FALSE  */
-  YYSYMBOL_T_TRUE = 10,                    /* T_TRUE  */
-  YYSYMBOL_T_FLOAT = 11,                   /* T_FLOAT  */
-  YYSYMBOL_T_INT = 12,                     /* T_INT  */
-  YYSYMBOL_YYACCEPT = 13,                  /* $accept  */
-  YYSYMBOL_input = 14,                     /* input  */
-  YYSYMBOL_s_exp = 15,                     /* s_exp  */
-  YYSYMBOL_s_exp_list = 16,                /* s_exp_list  */
-  YYSYMBOL_id = 17                         /* id  */
+  YYSYMBOL_T_L_PAREN1 = 3,                 /* T_L_PAREN1  */
+  YYSYMBOL_T_R_PAREN1 = 4,                 /* T_R_PAREN1  */
+  YYSYMBOL_T_L_PAREN2 = 5,                 /* T_L_PAREN2  */
+  YYSYMBOL_T_R_PAREN2 = 6,                 /* T_R_PAREN2  */
+  YYSYMBOL_T_ATOM = 7,                     /* T_ATOM  */
+  YYSYMBOL_T_KEYWORD = 8,                  /* T_KEYWORD  */
+  YYSYMBOL_T_SYMBOL = 9,                   /* T_SYMBOL  */
+  YYSYMBOL_T_NIL = 10,                     /* T_NIL  */
+  YYSYMBOL_T_FALSE = 11,                   /* T_FALSE  */
+  YYSYMBOL_T_TRUE = 12,                    /* T_TRUE  */
+  YYSYMBOL_T_FLOAT = 13,                   /* T_FLOAT  */
+  YYSYMBOL_T_INT = 14,                     /* T_INT  */
+  YYSYMBOL_YYACCEPT = 15,                  /* $accept  */
+  YYSYMBOL_input = 16,                     /* input  */
+  YYSYMBOL_s_exp = 17,                     /* s_exp  */
+  YYSYMBOL_s_exp_list = 18,                /* s_exp_list  */
+  YYSYMBOL_id = 19                         /* id  */
 };
 typedef enum yysymbol_kind_t yysymbol_kind_t;
 
@@ -450,21 +452,21 @@ union yyalloc
 #endif /* !YYCOPY_NEEDED */
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  15
+#define YYFINAL  17
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   17
+#define YYLAST   22
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  13
+#define YYNTOKENS  15
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  15
+#define YYNRULES  16
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  20
+#define YYNSTATES  23
 
 /* YYMAXUTOK -- Last valid token kind.  */
-#define YYMAXUTOK   267
+#define YYMAXUTOK   269
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -504,15 +506,15 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7,     8,     9,    10,    11,    12
+       5,     6,     7,     8,     9,    10,    11,    12,    13,    14
 };
 
 #if YYDEBUG
 /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
 static const yytype_int8 yyrline[] =
 {
-       0,    27,    27,    28,    32,    35,    36,    37,    41,    42,
-      43,    44,    45,    46,    47,    48
+       0,    28,    28,    29,    33,    34,    37,    38,    39,    43,
+      44,    45,    46,    47,    48,    49,    50
 };
 #endif
 
@@ -528,10 +530,10 @@ static const char *yysymbol_name (yysymbol_kind_t yysymbol) YY_ATTRIBUTE_UNUSED;
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "\"end of file\"", "error", "\"invalid token\"", "T_L_PARAN",
-  "T_R_PARAN", "T_ATOM", "T_KEYWORD", "T_SYMBOL", "T_NIL", "T_FALSE",
-  "T_TRUE", "T_FLOAT", "T_INT", "$accept", "input", "s_exp", "s_exp_list",
-  "id", YY_NULLPTR
+  "\"end of file\"", "error", "\"invalid token\"", "T_L_PAREN1",
+  "T_R_PAREN1", "T_L_PAREN2", "T_R_PAREN2", "T_ATOM", "T_KEYWORD",
+  "T_SYMBOL", "T_NIL", "T_FALSE", "T_TRUE", "T_FLOAT", "T_INT", "$accept",
+  "input", "s_exp", "s_exp_list", "id", YY_NULLPTR
 };
 
 static const char *
@@ -541,7 +543,7 @@ yysymbol_name (yysymbol_kind_t yysymbol)
 }
 #endif
 
-#define YYPACT_NINF (-4)
+#define YYPACT_NINF (-3)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -555,8 +557,9 @@ yysymbol_name (yysymbol_kind_t yysymbol)
    STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-      -2,    -3,    11,    -2,    -4,    -4,    -4,    -4,    -4,    -4,
-      -4,    -4,    -3,    12,    -3,    -4,    -4,    -4,    -4,    -4
+      -1,     7,     7,     3,    -1,    -3,    -3,    -3,    -3,    -3,
+      -3,    -3,    -3,     7,     2,     7,    16,    -3,    -3,    -3,
+      -3,    -3,    -3
 };
 
 /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -564,20 +567,21 @@ static const yytype_int8 yypact[] =
    means the default is an error.  */
 static const yytype_int8 yydefact[] =
 {
-       2,     5,     0,     2,    14,    12,    13,    15,     8,     9,
-      11,    10,     5,     0,     5,     1,     3,     6,     4,     7
+       2,     6,     6,     0,     2,    15,    13,    14,    16,     9,
+      10,    12,    11,     6,     0,     6,     0,     1,     3,     7,
+       4,     8,     5
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -4,    14,    10,     0,    -4
+      -3,     4,     1,    -2,    -3
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-       0,     2,    12,    13,    14
+       0,     3,    13,    14,    15
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -585,36 +589,39 @@ static const yytype_int8 yydefgoto[] =
    number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-       1,     1,     4,     5,     6,     7,     8,     9,    10,    11,
-       3,    15,    17,     3,    19,     0,    18,    16
+      16,     4,     1,    17,     2,     4,    20,     0,    18,     0,
+       1,    19,     2,    21,     5,     6,     7,     8,     9,    10,
+      11,    12,    22
 };
 
 static const yytype_int8 yycheck[] =
 {
-       3,     3,     5,     6,     7,     8,     9,    10,    11,    12,
-       0,     0,    12,     3,    14,    -1,     4,     3
+       2,     0,     3,     0,     5,     4,     4,    -1,     4,    -1,
+       3,    13,     5,    15,     7,     8,     9,    10,    11,    12,
+      13,    14,     6
 };
 
 /* YYSTOS[STATE-NUM] -- The symbol kind of the accessing symbol of
    state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,     3,    14,    15,     5,     6,     7,     8,     9,    10,
-      11,    12,    15,    16,    17,     0,    14,    16,     4,    16
+       0,     3,     5,    16,    17,     7,     8,     9,    10,    11,
+      12,    13,    14,    17,    18,    19,    18,     0,    16,    18,
+       4,    18,     6
 };
 
 /* YYR1[RULE-NUM] -- Symbol kind of the left-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    13,    14,    14,    15,    16,    16,    16,    17,    17,
-      17,    17,    17,    17,    17,    17
+       0,    15,    16,    16,    17,    17,    18,    18,    18,    19,
+      19,    19,    19,    19,    19,    19,    19
 };
 
 /* YYR2[RULE-NUM] -- Number of symbols on the right-hand side of rule RULE-NUM.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     2,     3,     0,     2,     2,     1,     1,
-       1,     1,     1,     1,     1,     1
+       0,     2,     0,     2,     3,     3,     0,     2,     2,     1,
+       1,     1,     1,     1,     1,     1,     1
 };
 
 
@@ -1077,74 +1084,80 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-  case 4: /* s_exp: T_L_PARAN s_exp_list T_R_PARAN  */
-#line 32 "Parser.y"
-                                 {}
-#line 1084 "Parser.tab.c"
+  case 4: /* s_exp: T_L_PAREN1 s_exp_list T_R_PAREN1  */
+#line 33 "Parser.y"
+                                   {}
+#line 1091 "Parser.tab.c"
     break;
 
-  case 6: /* s_exp_list: s_exp s_exp_list  */
-#line 36 "Parser.y"
+  case 5: /* s_exp: T_L_PAREN2 s_exp_list T_R_PAREN2  */
+#line 34 "Parser.y"
+                                   {}
+#line 1097 "Parser.tab.c"
+    break;
+
+  case 7: /* s_exp_list: s_exp s_exp_list  */
+#line 38 "Parser.y"
                    {printf("Found s_exp in s_exp list \n");}
-#line 1090 "Parser.tab.c"
+#line 1103 "Parser.tab.c"
     break;
 
-  case 7: /* s_exp_list: id s_exp_list  */
-#line 37 "Parser.y"
+  case 8: /* s_exp_list: id s_exp_list  */
+#line 39 "Parser.y"
                    {printf("Found id s_exp list \n");}
-#line 1096 "Parser.tab.c"
+#line 1109 "Parser.tab.c"
     break;
 
-  case 8: /* id: T_FALSE  */
-#line 41 "Parser.y"
-             {}
-#line 1102 "Parser.tab.c"
-    break;
-
-  case 9: /* id: T_TRUE  */
-#line 42 "Parser.y"
-             {}
-#line 1108 "Parser.tab.c"
-    break;
-
-  case 10: /* id: T_INT  */
+  case 9: /* id: T_FALSE  */
 #line 43 "Parser.y"
              {}
-#line 1114 "Parser.tab.c"
+#line 1115 "Parser.tab.c"
     break;
 
-  case 11: /* id: T_FLOAT  */
+  case 10: /* id: T_TRUE  */
 #line 44 "Parser.y"
              {}
-#line 1120 "Parser.tab.c"
+#line 1121 "Parser.tab.c"
     break;
 
-  case 12: /* id: T_KEYWORD  */
+  case 11: /* id: T_INT  */
 #line 45 "Parser.y"
              {}
-#line 1126 "Parser.tab.c"
+#line 1127 "Parser.tab.c"
     break;
 
-  case 13: /* id: T_SYMBOL  */
+  case 12: /* id: T_FLOAT  */
 #line 46 "Parser.y"
              {}
-#line 1132 "Parser.tab.c"
+#line 1133 "Parser.tab.c"
     break;
 
-  case 14: /* id: T_ATOM  */
+  case 13: /* id: T_KEYWORD  */
 #line 47 "Parser.y"
              {}
-#line 1138 "Parser.tab.c"
+#line 1139 "Parser.tab.c"
     break;
 
-  case 15: /* id: T_NIL  */
+  case 14: /* id: T_SYMBOL  */
 #line 48 "Parser.y"
              {}
-#line 1144 "Parser.tab.c"
+#line 1145 "Parser.tab.c"
+    break;
+
+  case 15: /* id: T_ATOM  */
+#line 49 "Parser.y"
+             {}
+#line 1151 "Parser.tab.c"
+    break;
+
+  case 16: /* id: T_NIL  */
+#line 50 "Parser.y"
+             {}
+#line 1157 "Parser.tab.c"
     break;
 
 
-#line 1148 "Parser.tab.c"
+#line 1161 "Parser.tab.c"
 
       default: break;
     }
@@ -1337,5 +1350,5 @@ yyreturnlab:
   return yyresult;
 }
 
-#line 51 "Parser.y"
+#line 53 "Parser.y"
 
