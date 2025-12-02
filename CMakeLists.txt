@@ -6,6 +6,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # Set the project name
 project (TEST_LISP_MAIN)
+set (CMAKE_CXX_STANDARD 11)
 
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
