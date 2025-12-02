@@ -1,0 +1,16 @@
+#ifndef LEXER_H
+#define LEXER_H
+
+#include <string>
+#if ! defined(yyFlexLexerOnce)
+#include <FlexLexer.h>
+#endif
+
+class FooLexer : public yyFlexLexer
+{
+public:    
+    int yylex(std::string *yylval);
+    int yylex();
+};
+
+#endif

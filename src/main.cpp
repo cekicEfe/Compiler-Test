@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with GCC; see the file COPYING3.  If not see
 <http://www.gnu.org/licenses/>.  */
 
-#include "Parser.tab.h"
+#include "Parser.tab.hh"
 #include "gc/gc.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -26,7 +26,7 @@ int main(int argc, char **argv) {
   GC_enable_incremental();
   GC_INIT();
 
-  yyparse();
-
-  return 0;
+  FooLexer lexer;
+  yy::parser parser(lexer);
+  return parser();  
 }

@@ -38,8 +38,8 @@
             bdwgc
             pkgs.libuv
             pkgs.libgcc
-            pkgs.glibc
-            pkgs.glibc.dev
+            # pkgs.glibc
+            # pkgs.glibc.dev
             pkgs.libgccjit
           ];
 
@@ -49,8 +49,8 @@
             bdwgc
             pkgs.libuv
             pkgs.libgcc
-            pkgs.glibc.dev
-            pkgs.glibc
+            # pkgs.glibc.dev
+            # pkgs.glibc
             pkgs.libgccjit
           ];
 

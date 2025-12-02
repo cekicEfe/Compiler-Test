@@ -9,11 +9,12 @@ project (TEST_LISP_MAIN)
 
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
-    src/main.c
-    src/Parser/Parser.tab.h
+    src/main.cpp
+    src/Parser/Parser.tab.hh
+    src/Parser/Parser.tab.cc
 
-    src/Parser/Parser.tab.c
-    src/Lexer/lex.yy.c
+    src/Lexer/Lexer.h
+    src/Lexer/lex.yy.cc
 )
 
 # Add an executable with the above sources
