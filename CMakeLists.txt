@@ -11,11 +11,11 @@ set (CMAKE_CXX_STANDARD 11)
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
     src/main.cpp
-    src/Parser/Parser.tab.hh
-    src/Parser/Parser.tab.cc
+    src/Parser/Parser.hpp
+    src/Parser/Parser.cpp
 
-    src/Lexer/Lexer.h
-    src/Lexer/lex.yy.cc
+    src/Lexer/Scanner.hpp
+    src/Lexer/Scanner.cpp
 )
 
 # Add an executable with the above sources
