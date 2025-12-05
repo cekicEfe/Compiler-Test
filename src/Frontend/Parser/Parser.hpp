@@ -45,7 +45,7 @@
 #ifndef YY_YY_PARSER_HPP_INCLUDED
 # define YY_YY_PARSER_HPP_INCLUDED
 // "%code requires" blocks.
-#line 24 "Parser.yy"
+#line 23 "Parser.yy"
 
     namespace calc {
         class Scanner;
@@ -185,7 +185,7 @@
 # define YYDEBUG 0
 #endif
 
-#line 19 "Parser.yy"
+#line 18 "Parser.yy"
 namespace calc {
 #line 191 "Parser.hpp"
 
@@ -443,10 +443,15 @@ namespace calc {
     T_SYMBOL = 267,                // T_SYMBOL
     T_NIL = 268,                   // T_NIL
     T_QUOTE = 269,                 // T_QUOTE
-    T_FALSE = 270,                 // T_FALSE
-    T_TRUE = 271,                  // T_TRUE
-    T_FLOAT = 272,                 // T_FLOAT
-    T_INT = 273                    // T_INT
+    T_QUASI_Q = 270,               // T_QUASI_Q
+    T_UNQUOTE = 271,               // T_UNQUOTE
+    T_SPLICE = 272,                // T_SPLICE
+    T_FALSE = 273,                 // T_FALSE
+    T_TRUE = 274,                  // T_TRUE
+    T_FLOAT = 275,                 // T_FLOAT
+    T_INT = 276,                   // T_INT
+    T_CHAR = 277,                  // T_CHAR
+    T_STRING = 278                 // T_STRING
       };
       /// Backward compatibility alias (Bison 3.6).
       typedef token_kind_type yytokentype;
@@ -463,7 +468,7 @@ namespace calc {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 19, ///< Number of tokens.
+        YYNTOKENS = 24, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // "end of file"
         S_YYerror = 1,                           // error
@@ -480,15 +485,20 @@ namespace calc {
         S_T_SYMBOL = 12,                         // T_SYMBOL
         S_T_NIL = 13,                            // T_NIL
         S_T_QUOTE = 14,                          // T_QUOTE
-        S_T_FALSE = 15,                          // T_FALSE
-        S_T_TRUE = 16,                           // T_TRUE
-        S_T_FLOAT = 17,                          // T_FLOAT
-        S_T_INT = 18,                            // T_INT
-        S_YYACCEPT = 19,                         // $accept
-        S_input = 20,                            // input
-        S_s_exp = 21,                            // s_exp
-        S_s_exp_list = 22,                       // s_exp_list
-        S_id = 23                                // id
+        S_T_QUASI_Q = 15,                        // T_QUASI_Q
+        S_T_UNQUOTE = 16,                        // T_UNQUOTE
+        S_T_SPLICE = 17,                         // T_SPLICE
+        S_T_FALSE = 18,                          // T_FALSE
+        S_T_TRUE = 19,                           // T_TRUE
+        S_T_FLOAT = 20,                          // T_FLOAT
+        S_T_INT = 21,                            // T_INT
+        S_T_CHAR = 22,                           // T_CHAR
+        S_T_STRING = 23,                         // T_STRING
+        S_YYACCEPT = 24,                         // $accept
+        S_input = 25,                            // input
+        S_s_exp = 26,                            // s_exp
+        S_s_exp_list = 27,                       // s_exp_list
+        S_id = 28                                // id
       };
     };
 
@@ -998,6 +1008,51 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
+      make_T_QUASI_Q ()
+      {
+        return symbol_type (token::T_QUASI_Q);
+      }
+#else
+      static
+      symbol_type
+      make_T_QUASI_Q ()
+      {
+        return symbol_type (token::T_QUASI_Q);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_UNQUOTE ()
+      {
+        return symbol_type (token::T_UNQUOTE);
+      }
+#else
+      static
+      symbol_type
+      make_T_UNQUOTE ()
+      {
+        return symbol_type (token::T_UNQUOTE);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_SPLICE ()
+      {
+        return symbol_type (token::T_SPLICE);
+      }
+#else
+      static
+      symbol_type
+      make_T_SPLICE ()
+      {
+        return symbol_type (token::T_SPLICE);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
       make_T_FALSE ()
       {
         return symbol_type (token::T_FALSE);
@@ -1053,6 +1108,36 @@ switch (yykind)
       make_T_INT (const int& v)
       {
         return symbol_type (token::T_INT, v);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_CHAR ()
+      {
+        return symbol_type (token::T_CHAR);
+      }
+#else
+      static
+      symbol_type
+      make_T_CHAR ()
+      {
+        return symbol_type (token::T_CHAR);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_STRING ()
+      {
+        return symbol_type (token::T_STRING);
+      }
+#else
+      static
+      symbol_type
+      make_T_STRING ()
+      {
+        return symbol_type (token::T_STRING);
       }
 #endif
 
@@ -1359,9 +1444,9 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 45,     ///< Last index in yytable_.
+      yylast_ = 62,     ///< Last index in yytable_.
       yynnts_ = 5,  ///< Number of nonterminal symbols.
-      yyfinal_ = 19 ///< Termination state number.
+      yyfinal_ = 24 ///< Termination state number.
     };
 
 
@@ -1371,9 +1456,9 @@ switch (yykind)
   };
 
 
-#line 19 "Parser.yy"
+#line 18 "Parser.yy"
 } // calc
-#line 1377 "Parser.hpp"
+#line 1462 "Parser.hpp"
 
 
 

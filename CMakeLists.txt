@@ -11,6 +11,7 @@ set (CMAKE_CXX_STANDARD 11)
 # Create a sources variable with a link to all cpp files to compile
 set(SOURCES
     src/main.cpp
+
     src/Parser/Parser.hpp
     src/Parser/Parser.cpp
 
@@ -30,4 +31,5 @@ target_include_directories(TEST_LISP_MAIN
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/src/Parser
         ${PROJECT_SOURCE_DIR}/src/Lexer
+        ${PROJECT_SOURCE_DIR}/src/Backend/
 )

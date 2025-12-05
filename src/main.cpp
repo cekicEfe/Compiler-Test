@@ -10,9 +10,10 @@ int main(int argc, char **argv) {
   GC_enable_incremental();
   GC_INIT();
 
-  // std::istringstream is("( this is an sexp )"); <-- use this if you want to input string
+  // std::istringstream is("( this is an s_exp )"); <-- use this if you want to input string
+
   calc::Scanner scanner{ std::cin, std::cerr };
-  calc::Parser parser{ &scanner };
+  calc::Parser parser{ &scanner};
   std::cout.precision(10);
   parser.parse();
 }

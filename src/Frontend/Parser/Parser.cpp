@@ -37,7 +37,7 @@
 
 
 // First part of user prologue.
-#line 2 "Parser.yy"
+#line 1 "Parser.yy"
 
 
 // Thank you for saving my ass:
@@ -55,7 +55,7 @@
 
 
 // Unqualified %code blocks.
-#line 31 "Parser.yy"
+#line 30 "Parser.yy"
 
     #include "Scanner.hpp"
     #define yylex(x) scanner->lex(x)
@@ -132,7 +132,7 @@
 #define YYERROR         goto yyerrorlab
 #define YYRECOVERING()  (!!yyerrstatus_)
 
-#line 19 "Parser.yy"
+#line 18 "Parser.yy"
 namespace calc {
 #line 138 "Parser.cpp"
 
@@ -663,91 +663,133 @@ namespace calc {
           switch (yyn)
             {
   case 4: // s_exp: T_L_PAREN1 s_exp_list T_R_PAREN1
-#line 52 "Parser.yy"
+#line 56 "Parser.yy"
                                    {}
 #line 669 "Parser.cpp"
     break;
 
   case 5: // s_exp: T_L_PAREN2 s_exp_list T_R_PAREN2
-#line 53 "Parser.yy"
+#line 57 "Parser.yy"
                                    {}
 #line 675 "Parser.cpp"
     break;
 
   case 6: // s_exp: T_L_BRACK id id id T_R_BRACK
-#line 54 "Parser.yy"
+#line 58 "Parser.yy"
                                {}
 #line 681 "Parser.cpp"
     break;
 
   case 8: // s_exp_list: s_exp s_exp_list
-#line 58 "Parser.yy"
+#line 62 "Parser.yy"
                    {printf("Found s_exp in s_exp list \n");}
 #line 687 "Parser.cpp"
     break;
 
   case 9: // s_exp_list: id s_exp_list
-#line 59 "Parser.yy"
+#line 63 "Parser.yy"
                    {printf("Found id in s_exp list \n");}
 #line 693 "Parser.cpp"
     break;
 
   case 10: // id: T_QUOTE s_exp
-#line 63 "Parser.yy"
-                {printf("Found id : Quoted s_exp \n");}
+#line 67 "Parser.yy"
+                  {printf("Found id : Quoted s_exp \n");}
 #line 699 "Parser.cpp"
     break;
 
   case 11: // id: T_QUOTE id
-#line 64 "Parser.yy"
-                {printf("Found id : Quoted id \n");}
+#line 68 "Parser.yy"
+                  {printf("Found id : Quoted id \n");}
 #line 705 "Parser.cpp"
     break;
 
-  case 12: // id: T_FALSE
-#line 65 "Parser.yy"
-                {printf("Found id : False \n");}
+  case 12: // id: T_QUASI_Q id
+#line 69 "Parser.yy"
+                  {printf("Found id : Quasiquoted id \n");}
 #line 711 "Parser.cpp"
     break;
 
-  case 13: // id: T_TRUE
-#line 66 "Parser.yy"
-                {printf("Found id : True \n");}
+  case 13: // id: T_QUASI_Q s_exp
+#line 70 "Parser.yy"
+                  {printf("Found id : Quasiquoted s_exp \n");}
 #line 717 "Parser.cpp"
     break;
 
-  case 14: // id: T_INT
-#line 67 "Parser.yy"
-                {printf("Found id : Int \n");}
+  case 14: // id: T_UNQUOTE id
+#line 71 "Parser.yy"
+                  {printf("Found id : Unquoted id \n");}
 #line 723 "Parser.cpp"
     break;
 
-  case 15: // id: T_FLOAT
-#line 68 "Parser.yy"
-                {printf("Found id : Float \n");}
+  case 15: // id: T_UNQUOTE s_exp
+#line 72 "Parser.yy"
+                  {printf("Found id : Unquoted s_exp \n");}
 #line 729 "Parser.cpp"
     break;
 
-  case 16: // id: T_KEYWORD
-#line 69 "Parser.yy"
-                {printf("Found id : Keyword \n");}
+  case 16: // id: T_SPLICE s_exp
+#line 73 "Parser.yy"
+                  {printf("Found id : Spliced s_exp \n");}
 #line 735 "Parser.cpp"
     break;
 
-  case 17: // id: T_ATOM
-#line 70 "Parser.yy"
-                {printf("Found id : Atom \n");}
+  case 17: // id: T_FALSE
+#line 74 "Parser.yy"
+                  {printf("Found id : False \n");}
 #line 741 "Parser.cpp"
     break;
 
-  case 18: // id: T_NIL
-#line 71 "Parser.yy"
-                {printf("Found id : Nil \n");}
+  case 18: // id: T_TRUE
+#line 75 "Parser.yy"
+                  {printf("Found id : True \n");}
 #line 747 "Parser.cpp"
     break;
 
+  case 19: // id: T_INT
+#line 76 "Parser.yy"
+                  {printf("Found id : Int Const\n");}
+#line 753 "Parser.cpp"
+    break;
 
-#line 751 "Parser.cpp"
+  case 20: // id: T_FLOAT
+#line 77 "Parser.yy"
+                  {printf("Found id : Float Const\n");}
+#line 759 "Parser.cpp"
+    break;
+
+  case 21: // id: T_CHAR
+#line 78 "Parser.yy"
+                  {printf("Found id : Char Const\n");}
+#line 765 "Parser.cpp"
+    break;
+
+  case 22: // id: T_STRING
+#line 79 "Parser.yy"
+                  {printf("Found id : String Const\n");}
+#line 771 "Parser.cpp"
+    break;
+
+  case 23: // id: T_KEYWORD
+#line 80 "Parser.yy"
+                  {printf("Found id : Keyword \n");}
+#line 777 "Parser.cpp"
+    break;
+
+  case 24: // id: T_ATOM
+#line 81 "Parser.yy"
+                  {printf("Found id : Atom \n");}
+#line 783 "Parser.cpp"
+    break;
+
+  case 25: // id: T_NIL
+#line 82 "Parser.yy"
+                  {printf("Found id : Nil \n");}
+#line 789 "Parser.cpp"
+    break;
+
+
+#line 793 "Parser.cpp"
 
             default:
               break;
@@ -943,71 +985,80 @@ namespace calc {
   const signed char
   Parser::yypact_[] =
   {
-       4,     3,     3,    27,     1,     4,    -6,    -6,    -6,     3,
-      -6,    -6,    -6,    -6,     3,    -2,     3,    -5,    27,    -6,
-      -6,    -6,    -6,    -6,    -6,    -6,    -6,    27,    -4,    -6
+       5,     8,     8,    25,     1,     5,    -6,    -6,    -6,     8,
+       8,     8,     5,    -6,    -6,    -6,    -6,    -6,    -6,     8,
+      -2,     8,    -5,    25,    -6,    -6,    -6,    -6,    -6,    -6,
+      -6,    -6,    -6,    -6,    -6,    -6,    -6,    25,    -4,    -6
   };
 
   const signed char
   Parser::yydefact_[] =
   {
-       2,     7,     7,     0,     0,     2,    17,    16,    18,     0,
-      12,    13,    15,    14,     7,     0,     7,     0,     0,     1,
-       3,    10,    11,     8,     4,     9,     5,     0,     0,     6
+       2,     7,     7,     0,     0,     2,    24,    23,    25,     0,
+       0,     0,     0,    17,    18,    20,    19,    21,    22,     7,
+       0,     7,     0,     0,     1,     3,    10,    11,    13,    12,
+      15,    14,    16,     8,     4,     9,     5,     0,     0,     6
   };
 
   const signed char
   Parser::yypgoto_[] =
   {
-      -6,    -1,    23,    20,    -3
+      -6,    -1,    50,    30,    -3
   };
 
   const signed char
   Parser::yydefgoto_[] =
   {
-       0,     4,    14,    15,    16
+       0,     4,    19,    20,    21
   };
 
   const signed char
   Parser::yytable_[] =
   {
-      18,    19,    26,    24,    20,    29,    22,     1,     1,     2,
-       2,     3,     3,     6,     7,    27,     8,     9,    10,    11,
-      12,    13,    17,     5,    28,     0,     0,     0,     5,     0,
-       0,     0,    21,     0,    23,     0,    25,     6,     7,     0,
-       8,     9,    10,    11,    12,    13
+      23,    24,    36,    34,    25,    39,    27,    29,    31,     1,
+       0,     2,     1,     3,     2,     0,     3,     0,     6,     7,
+      37,     8,     9,    10,    11,    12,    13,    14,    15,    16,
+      17,    18,    22,     0,    38,     6,     7,     0,     8,     9,
+      10,    11,    12,    13,    14,    15,    16,    17,    18,    33,
+       5,    35,     0,     0,     0,     5,     0,     0,     0,    26,
+      28,    30,    32
   };
 
   const signed char
   Parser::yycheck_[] =
   {
-       3,     0,     7,     5,     5,     9,     9,     4,     4,     6,
-       6,     8,     8,    10,    11,    18,    13,    14,    15,    16,
-      17,    18,     2,     0,    27,    -1,    -1,    -1,     5,    -1,
-      -1,    -1,     9,    -1,    14,    -1,    16,    10,    11,    -1,
-      13,    14,    15,    16,    17,    18
+       3,     0,     7,     5,     5,     9,     9,    10,    11,     4,
+      -1,     6,     4,     8,     6,    -1,     8,    -1,    10,    11,
+      23,    13,    14,    15,    16,    17,    18,    19,    20,    21,
+      22,    23,     2,    -1,    37,    10,    11,    -1,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    19,
+       0,    21,    -1,    -1,    -1,     5,    -1,    -1,    -1,     9,
+      10,    11,    12
   };
 
   const signed char
   Parser::yystos_[] =
   {
-       0,     4,     6,     8,    20,    21,    10,    11,    13,    14,
-      15,    16,    17,    18,    21,    22,    23,    22,    23,     0,
-      20,    21,    23,    22,     5,    22,     7,    23,    23,     9
+       0,     4,     6,     8,    25,    26,    10,    11,    13,    14,
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    26,
+      27,    28,    27,    28,     0,    25,    26,    28,    26,    28,
+      26,    28,    26,    27,     5,    27,     7,    28,    28,     9
   };
 
   const signed char
   Parser::yyr1_[] =
   {
-       0,    19,    20,    20,    21,    21,    21,    22,    22,    22,
-      23,    23,    23,    23,    23,    23,    23,    23,    23
+       0,    24,    25,    25,    26,    26,    26,    27,    27,    27,
+      28,    28,    28,    28,    28,    28,    28,    28,    28,    28,
+      28,    28,    28,    28,    28,    28
   };
 
   const signed char
   Parser::yyr2_[] =
   {
        0,     2,     0,     2,     3,     3,     5,     0,     2,     2,
-       2,     2,     1,     1,     1,     1,     1,     1,     1
+       2,     2,     2,     2,     2,     2,     2,     1,     1,     1,
+       1,     1,     1,     1,     1,     1
   };
 
 
@@ -1020,8 +1071,9 @@ namespace calc {
   "\"end of file\"", "error", "\"invalid token\"", "T_ERROR",
   "T_L_PAREN1", "T_R_PAREN1", "T_L_PAREN2", "T_R_PAREN2", "T_L_BRACK",
   "T_R_BRACK", "T_ATOM", "T_KEYWORD", "T_SYMBOL", "T_NIL", "T_QUOTE",
-  "T_FALSE", "T_TRUE", "T_FLOAT", "T_INT", "$accept", "input", "s_exp",
-  "s_exp_list", "id", YY_NULLPTR
+  "T_QUASI_Q", "T_UNQUOTE", "T_SPLICE", "T_FALSE", "T_TRUE", "T_FLOAT",
+  "T_INT", "T_CHAR", "T_STRING", "$accept", "input", "s_exp", "s_exp_list",
+  "id", YY_NULLPTR
   };
 #endif
 
@@ -1030,8 +1082,9 @@ namespace calc {
   const signed char
   Parser::yyrline_[] =
   {
-       0,    47,    47,    48,    52,    53,    54,    57,    58,    59,
-      63,    64,    65,    66,    67,    68,    69,    70,    71
+       0,    51,    51,    52,    56,    57,    58,    61,    62,    63,
+      67,    68,    69,    70,    71,    72,    73,    74,    75,    76,
+      77,    78,    79,    80,    81,    82
   };
 
   void
@@ -1097,10 +1150,10 @@ namespace calc {
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18
+      15,    16,    17,    18,    19,    20,    21,    22,    23
     };
     // Last valid token kind.
-    const int code_max = 273;
+    const int code_max = 278;
 
     if (t <= 0)
       return symbol_kind::S_YYEOF;
@@ -1110,11 +1163,11 @@ namespace calc {
       return symbol_kind::S_YYUNDEF;
   }
 
-#line 19 "Parser.yy"
+#line 18 "Parser.yy"
 } // calc
-#line 1116 "Parser.cpp"
+#line 1169 "Parser.cpp"
 
-#line 74 "Parser.yy"
+#line 85 "Parser.yy"
 
 
 void calc::Parser::error(const std::string& msg) {

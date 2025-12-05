@@ -1,4 +1,3 @@
-
 %{
 
 // Thank you for saving my ass:
@@ -19,7 +18,7 @@
 %define api.namespace {calc}
 %define api.value.type variant
 %parse-param {Scanner* scanner}
- 
+
 %code requires
 {
     namespace calc {
@@ -37,12 +36,16 @@
 %token T_L_PAREN1 T_R_PAREN1
 %token T_L_PAREN2 T_R_PAREN2
 %token T_L_BRACK T_R_BRACK
+
 %token T_ATOM T_KEYWORD T_SYMBOL T_NIL
 %token T_QUOTE T_QUASI_Q T_UNQUOTE T_SPLICE
+
 %token T_FALSE T_TRUE
 %token <float> T_FLOAT
 %token <int> T_INT
-  
+%token T_CHAR
+%token T_STRING
+
 %%
 
 input:
@@ -61,15 +64,22 @@ s_exp_list:
 ;
 
 id:
-  T_QUOTE s_exp {printf("Found id : Quoted s_exp \n");}
-| T_QUOTE id    {printf("Found id : Quoted id \n");}
-| T_FALSE       {printf("Found id : False \n");}
-| T_TRUE        {printf("Found id : True \n");}
-| T_INT         {printf("Found id : Int \n");}
-| T_FLOAT       {printf("Found id : Float \n");}
-| T_KEYWORD     {printf("Found id : Keyword \n");}
-| T_ATOM        {printf("Found id : Atom \n");}
-| T_NIL         {printf("Found id : Nil \n");}
+  T_QUOTE s_exp   {printf("Found id : Quoted s_exp \n");}
+| T_QUOTE id      {printf("Found id : Quoted id \n");}
+| T_QUASI_Q id    {printf("Found id : Quasiquoted id \n");}
+| T_QUASI_Q s_exp {printf("Found id : Quasiquoted s_exp \n");}
+| T_UNQUOTE id    {printf("Found id : Unquoted id \n");}
+| T_UNQUOTE s_exp {printf("Found id : Unquoted s_exp \n");}
+| T_SPLICE s_exp  {printf("Found id : Spliced s_exp \n");}
+| T_FALSE         {printf("Found id : False \n");}
+| T_TRUE          {printf("Found id : True \n");}
+| T_INT           {printf("Found id : Int Const\n");}
+| T_FLOAT         {printf("Found id : Float Const\n");}
+| T_CHAR          {printf("Found id : Char Const\n");}
+| T_STRING        {printf("Found id : String Const\n");}
+| T_KEYWORD       {printf("Found id : Keyword \n");}
+| T_ATOM          {printf("Found id : Atom \n");}
+| T_NIL           {printf("Found id : Nil \n");}
 ;
 
 %%

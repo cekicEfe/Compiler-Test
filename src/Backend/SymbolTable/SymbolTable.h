@@ -1,17 +1,15 @@
-#ifndef MY_SYMBOL_TABLE_H
-#define MY_SYMBOL_TABLE_H
+#ifndef SYMBOL_TABLE_H
+#define SYMBOL_TABLE_H
 
 #include <string>
 #include <unordered_map>
-
-class Data;
+#include "JitData.hpp"
 
 namespace sym {
 
 struct Symbol {
   std::string name;
-  std::string type;
-  Data data ;
+  jit_data::Data data ;
   bool immutable = false;
 };
 
@@ -25,8 +23,8 @@ public:
 
   bool isExist(const std::string &name);
   void defineSymbol(const Symbol &symbol);
-  void setSymbol(const std::string &nameOfSymbol, const std::string &newType,
-                 const Data newData, const bool newImmutablity);
+  void setSymbol(const std::string &nameOfSymbol,
+                 const jit_data::Data newData, const bool newImmutablity);
   void unsetSymbol(const std::string &nameOfSymbol);
 };
 
