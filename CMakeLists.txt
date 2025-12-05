@@ -12,11 +12,11 @@ set (CMAKE_CXX_STANDARD 11)
 set(SOURCES
     src/main.cpp
 
-    src/Parser/Parser.hpp
-    src/Parser/Parser.cpp
+    src/Frontend/Parser/Parser.hpp
+    src/Frontend/Parser/Parser.cpp
 
-    src/Lexer/Scanner.hpp
-    src/Lexer/Scanner.cpp
+    src/Frontend/Lexer/Scanner.hpp
+    src/Frontend/Lexer/Scanner.cpp
 )
 
 # Add an executable with the above sources
@@ -29,7 +29,6 @@ target_link_libraries(TEST_LISP_MAIN
 
 target_include_directories(TEST_LISP_MAIN
     PRIVATE 
-        ${PROJECT_SOURCE_DIR}/src/Parser
-        ${PROJECT_SOURCE_DIR}/src/Lexer
-        ${PROJECT_SOURCE_DIR}/src/Backend/
+        ${PROJECT_SOURCE_DIR}/src/Frontend/Parser
+        ${PROJECT_SOURCE_DIR}/src/Frontend/Lexer
 )
