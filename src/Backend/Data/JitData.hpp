@@ -12,8 +12,8 @@ namespace jit_data {
 
 class Data {
   WITH_GCCJIT_BACKEND(
-    public :
-      gccjit::type type;
+    private :
+      gccjit::object object;
     )
 };
 

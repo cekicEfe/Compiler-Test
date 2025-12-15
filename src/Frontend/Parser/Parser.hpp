@@ -45,7 +45,7 @@
 #ifndef YY_YY_PARSER_HPP_INCLUDED
 # define YY_YY_PARSER_HPP_INCLUDED
 // "%code requires" blocks.
-#line 23 "Parser.yy"
+#line 23 "./Parser.yy"
 
     namespace calc {
         class Scanner;
@@ -185,7 +185,7 @@
 # define YYDEBUG 0
 #endif
 
-#line 18 "Parser.yy"
+#line 18 "./Parser.yy"
 namespace calc {
 #line 191 "Parser.hpp"
 
@@ -1444,7 +1444,7 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 62,     ///< Last index in yytable_.
+      yylast_ = 40,     ///< Last index in yytable_.
       yynnts_ = 5,  ///< Number of nonterminal symbols.
       yyfinal_ = 24 ///< Termination state number.
     };
@@ -1456,7 +1456,7 @@ switch (yykind)
   };
 
 
-#line 18 "Parser.yy"
+#line 18 "./Parser.yy"
 } // calc
 #line 1462 "Parser.hpp"
 

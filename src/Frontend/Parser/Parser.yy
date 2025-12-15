@@ -55,7 +55,7 @@ input:
 s_exp:
   T_L_PAREN1 s_exp_list T_R_PAREN1 {}
 | T_L_PAREN2 s_exp_list T_R_PAREN2 {}
-| T_L_BRACK id id id T_R_BRACK {}
+| T_L_BRACK s_exp s_exp s_exp T_R_BRACK {}
 ;
 
 s_exp_list:
