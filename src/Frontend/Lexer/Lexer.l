@@ -69,11 +69,11 @@
 
 [ \t]; // ignore all whitespace
 [\n] ;
-.    {return Parser::token::T_ERROR;} 
-
+.    ;
 
 %%
  
+//.    {return Parser::token::T_ERROR;} 
 int yyFlexLexer::yylex() {
     throw std::runtime_error("Bad call to yyFlexLexer::yylex()");
 }

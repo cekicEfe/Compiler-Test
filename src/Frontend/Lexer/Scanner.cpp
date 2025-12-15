@@ -782,11 +782,11 @@ YY_RULE_SETUP
 case 26:
 YY_RULE_SETUP
 #line 73 "Lexer.l"
-{return Parser::token::T_ERROR;} 
+;
 	YY_BREAK
 case 27:
 YY_RULE_SETUP
-#line 76 "Lexer.l"
+#line 75 "Lexer.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
 #line 792 "Scanner.cpp"
@@ -1752,9 +1752,10 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 76 "Lexer.l"
+#line 75 "Lexer.l"
 
  
+//.    {return Parser::token::T_ERROR;} 
 int yyFlexLexer::yylex() {
     throw std::runtime_error("Bad call to yyFlexLexer::yylex()");
 }
