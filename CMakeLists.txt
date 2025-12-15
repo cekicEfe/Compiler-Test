@@ -32,4 +32,7 @@ target_include_directories(TEST_LISP_MAIN
         ${PROJECT_SOURCE_DIR}/src/Frontend/Parser
         ${PROJECT_SOURCE_DIR}/src/Frontend/Lexer
 
+        ${PROJECT_SOURCE_DIR}/src/Backend/Interpreter
+        ${PROJECT_SOURCE_DIR}/src/Backend/SymbolTable
+        ${PROJECT_SOURCE_DIR}/src/Backend/Data
 )

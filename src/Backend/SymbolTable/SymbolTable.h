@@ -3,7 +3,7 @@
 
 #include <string>
 #include <unordered_map>
-#include "JitData.hpp"
+#include "Data.hpp"
 
 namespace sym {
 
