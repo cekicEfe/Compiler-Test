@@ -31,5 +31,5 @@ target_include_directories(TEST_LISP_MAIN
     PRIVATE 
         ${PROJECT_SOURCE_DIR}/src/Frontend/Parser
         ${PROJECT_SOURCE_DIR}/src/Frontend/Lexer
-        ${PROJECT_SOURCE_DIR}/src/Backend/
+
 )
