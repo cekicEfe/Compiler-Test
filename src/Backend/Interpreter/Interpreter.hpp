@@ -1,9 +1,21 @@
 #ifndef INTERPRETTER_CPP
 #define INTERPRETTER_CPP
 
-class Interpeter{
-  private:
-    Symbol
-  };
+#include "SymbolTable.h"
+
+namespace intpr {
+
+class ConsCell {
+  ConsCell *car;
+  ConsCell *cdr;
+};
+
+class Interpeter {
+private:
+  sym::SymbolTable symbolTable;
+public:
+};
+
+} // namespace intpr
 
 #endif

@@ -14,39 +14,44 @@
  
 %%
  
-"#T"       {printf("Found Token : T \n");return Parser::token::T_TRUE; }
-"#F"       {printf("Found Token : F \n");return Parser::token::T_FALSE;}
-
-"#t"       {printf("Found Token : T \n");return Parser::token::T_TRUE; }
-"#f"       {printf("Found Token : F \n");return Parser::token::T_FALSE;}
-
+"#t"       {
+  printf("Found Token : T \n");
+  yylval->build<bool>(true);
+  return Parser::token::T_TRUE;
+}
+"#f"       {
+  printf("Found Token : F \n");
+  yylval->build<bool>(false);
+  return Parser::token::T_FALSE;
+}
 [0-9]+ {
   printf("Found Token : INTEGER \n");
+  yylval->build<int>(std::stoi(yytext));
   return Parser::token::T_INT;
-}
-  
+} 
 [-+]?[0-9]+\.[0-9]+([eE][+-]?[0-9]*)? {
   printf("Found Token : FLOAT \n");
+  yylval->build<float>(std::stof(yytext));
   return Parser::token::T_FLOAT;
 }
-
 #\\([a-zA-Z0-9]+) {
   printf("Found Token : CHAR \n");
   return Parser::token::T_CHAR;
 }
-
 \"([^\\\"]|\\.)*\" {
   printf("Found Token : STRING \n");
+  yylval->build<std::string>(yytext);
   return Parser::token::T_STRING;
 } 
 
-
 [a-zA-Z_\-*+?\^%=!]+[0-9]*  {
   printf("Found Token : ATOM \n");
+  yylval->build<std::string>(yytext);
   return Parser::token::T_ATOM;
 }
 :[a-zA-Z_\-*+?\^%=!]+[0-9]* {
   printf("Found Token : KEYWORD \n");
+  yylval->build<std::string>(yytext);
   return Parser::token::T_KEYWORD;
 }
 

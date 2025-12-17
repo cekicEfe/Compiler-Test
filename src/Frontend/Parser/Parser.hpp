@@ -383,11 +383,24 @@ namespace calc {
     /// An auxiliary type to compute the largest semantic type.
     union union_type
     {
+      // T_FALSE
+      // T_TRUE
+      char dummy1[sizeof (bool)];
+
+      // T_CHAR
+      char dummy2[sizeof (char)];
+
       // T_FLOAT
-      char dummy1[sizeof (float)];
+      char dummy3[sizeof (float)];
 
       // T_INT
-      char dummy2[sizeof (int)];
+      char dummy4[sizeof (int)];
+
+      // T_ATOM
+      // T_KEYWORD
+      // T_SYMBOL
+      // T_STRING
+      char dummy5[sizeof (std::string)];
     };
 
     /// The size of the largest semantic type.
@@ -533,12 +546,28 @@ namespace calc {
       {
         switch (this->kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.move< bool > (std::move (that.value));
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.move< char > (std::move (that.value));
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.move< float > (std::move (that.value));
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.move< int > (std::move (that.value));
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.move< std::string > (std::move (that.value));
         break;
 
       default:
@@ -563,6 +592,30 @@ namespace calc {
 #endif
 
 #if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, bool&& v)
+        : Base (t)
+        , value (std::move (v))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const bool& v)
+        : Base (t)
+        , value (v)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, char&& v)
+        : Base (t)
+        , value (std::move (v))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const char& v)
+        : Base (t)
+        , value (v)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
       basic_symbol (typename Base::kind_type t, float&& v)
         : Base (t)
         , value (std::move (v))
@@ -581,6 +634,18 @@ namespace calc {
       {}
 #else
       basic_symbol (typename Base::kind_type t, const int& v)
+        : Base (t)
+        , value (v)
+      {}
+#endif
+
+#if 201103L <= YY_CPLUSPLUS
+      basic_symbol (typename Base::kind_type t, std::string&& v)
+        : Base (t)
+        , value (std::move (v))
+      {}
+#else
+      basic_symbol (typename Base::kind_type t, const std::string& v)
         : Base (t)
         , value (v)
       {}
@@ -610,12 +675,28 @@ namespace calc {
         // Value type destructor.
 switch (yykind)
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.template destroy< bool > ();
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.template destroy< char > ();
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.template destroy< float > ();
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.template destroy< int > ();
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.template destroy< std::string > ();
         break;
 
       default:
@@ -715,6 +796,22 @@ switch (yykind)
 #endif
       {}
 #if 201103L <= YY_CPLUSPLUS
+      symbol_type (int tok, bool v)
+        : super_type (token_kind_type (tok), std::move (v))
+#else
+      symbol_type (int tok, const bool& v)
+        : super_type (token_kind_type (tok), v)
+#endif
+      {}
+#if 201103L <= YY_CPLUSPLUS
+      symbol_type (int tok, char v)
+        : super_type (token_kind_type (tok), std::move (v))
+#else
+      symbol_type (int tok, const char& v)
+        : super_type (token_kind_type (tok), v)
+#endif
+      {}
+#if 201103L <= YY_CPLUSPLUS
       symbol_type (int tok, float v)
         : super_type (token_kind_type (tok), std::move (v))
 #else
@@ -727,6 +824,14 @@ switch (yykind)
         : super_type (token_kind_type (tok), std::move (v))
 #else
       symbol_type (int tok, const int& v)
+        : super_type (token_kind_type (tok), v)
+#endif
+      {}
+#if 201103L <= YY_CPLUSPLUS
+      symbol_type (int tok, std::string v)
+        : super_type (token_kind_type (tok), std::move (v))
+#else
+      symbol_type (int tok, const std::string& v)
         : super_type (token_kind_type (tok), v)
 #endif
       {}
@@ -933,46 +1038,46 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_ATOM ()
+      make_T_ATOM (std::string v)
       {
-        return symbol_type (token::T_ATOM);
+        return symbol_type (token::T_ATOM, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_ATOM ()
+      make_T_ATOM (const std::string& v)
       {
-        return symbol_type (token::T_ATOM);
+        return symbol_type (token::T_ATOM, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_KEYWORD ()
+      make_T_KEYWORD (std::string v)
       {
-        return symbol_type (token::T_KEYWORD);
+        return symbol_type (token::T_KEYWORD, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_KEYWORD ()
+      make_T_KEYWORD (const std::string& v)
       {
-        return symbol_type (token::T_KEYWORD);
+        return symbol_type (token::T_KEYWORD, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_SYMBOL ()
+      make_T_SYMBOL (std::string v)
       {
-        return symbol_type (token::T_SYMBOL);
+        return symbol_type (token::T_SYMBOL, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_SYMBOL ()
+      make_T_SYMBOL (const std::string& v)
       {
-        return symbol_type (token::T_SYMBOL);
+        return symbol_type (token::T_SYMBOL, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1053,31 +1158,31 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_FALSE ()
+      make_T_FALSE (bool v)
       {
-        return symbol_type (token::T_FALSE);
+        return symbol_type (token::T_FALSE, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_FALSE ()
+      make_T_FALSE (const bool& v)
       {
-        return symbol_type (token::T_FALSE);
+        return symbol_type (token::T_FALSE, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_TRUE ()
+      make_T_TRUE (bool v)
       {
-        return symbol_type (token::T_TRUE);
+        return symbol_type (token::T_TRUE, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_TRUE ()
+      make_T_TRUE (const bool& v)
       {
-        return symbol_type (token::T_TRUE);
+        return symbol_type (token::T_TRUE, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1113,31 +1218,31 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_CHAR ()
+      make_T_CHAR (char v)
       {
-        return symbol_type (token::T_CHAR);
+        return symbol_type (token::T_CHAR, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_CHAR ()
+      make_T_CHAR (const char& v)
       {
-        return symbol_type (token::T_CHAR);
+        return symbol_type (token::T_CHAR, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
-      make_T_STRING ()
+      make_T_STRING (std::string v)
       {
-        return symbol_type (token::T_STRING);
+        return symbol_type (token::T_STRING, std::move (v));
       }
 #else
       static
       symbol_type
-      make_T_STRING ()
+      make_T_STRING (const std::string& v)
       {
-        return symbol_type (token::T_STRING);
+        return symbol_type (token::T_STRING, v);
       }
 #endif
 
@@ -1458,7 +1563,7 @@ switch (yykind)
 
 #line 18 "./Parser.yy"
 } // calc
-#line 1462 "Parser.hpp"
+#line 1567 "Parser.hpp"
 
 
 

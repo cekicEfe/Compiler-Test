@@ -165,12 +165,28 @@ namespace calc {
   {
     switch (this->kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.copy< bool > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.copy< char > (YY_MOVE (that.value));
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.copy< float > (YY_MOVE (that.value));
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.copy< int > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.copy< std::string > (YY_MOVE (that.value));
         break;
 
       default:
@@ -204,12 +220,28 @@ namespace calc {
     super_type::move (s);
     switch (this->kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.move< bool > (YY_MOVE (s.value));
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.move< char > (YY_MOVE (s.value));
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.move< float > (YY_MOVE (s.value));
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.move< int > (YY_MOVE (s.value));
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.move< std::string > (YY_MOVE (s.value));
         break;
 
       default:
@@ -312,12 +344,28 @@ namespace calc {
   {
     switch (that.kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.YY_MOVE_OR_COPY< bool > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.YY_MOVE_OR_COPY< char > (YY_MOVE (that.value));
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.YY_MOVE_OR_COPY< float > (YY_MOVE (that.value));
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.YY_MOVE_OR_COPY< int > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.YY_MOVE_OR_COPY< std::string > (YY_MOVE (that.value));
         break;
 
       default:
@@ -335,12 +383,28 @@ namespace calc {
   {
     switch (that.kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.move< bool > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.move< char > (YY_MOVE (that.value));
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.move< float > (YY_MOVE (that.value));
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.move< int > (YY_MOVE (that.value));
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.move< std::string > (YY_MOVE (that.value));
         break;
 
       default:
@@ -358,12 +422,28 @@ namespace calc {
     state = that.state;
     switch (that.kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.copy< bool > (that.value);
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.copy< char > (that.value);
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.copy< float > (that.value);
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.copy< int > (that.value);
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.copy< std::string > (that.value);
         break;
 
       default:
@@ -379,12 +459,28 @@ namespace calc {
     state = that.state;
     switch (that.kind ())
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        value.move< bool > (that.value);
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        value.move< char > (that.value);
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         value.move< float > (that.value);
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         value.move< int > (that.value);
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        value.move< std::string > (that.value);
         break;
 
       default:
@@ -640,12 +736,28 @@ namespace calc {
          when using variants.  */
       switch (yyr1_[yyn])
     {
+      case symbol_kind::S_T_FALSE: // T_FALSE
+      case symbol_kind::S_T_TRUE: // T_TRUE
+        yylhs.value.emplace< bool > ();
+        break;
+
+      case symbol_kind::S_T_CHAR: // T_CHAR
+        yylhs.value.emplace< char > ();
+        break;
+
       case symbol_kind::S_T_FLOAT: // T_FLOAT
         yylhs.value.emplace< float > ();
         break;
 
       case symbol_kind::S_T_INT: // T_INT
         yylhs.value.emplace< int > ();
+        break;
+
+      case symbol_kind::S_T_ATOM: // T_ATOM
+      case symbol_kind::S_T_KEYWORD: // T_KEYWORD
+      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
+      case symbol_kind::S_T_STRING: // T_STRING
+        yylhs.value.emplace< std::string > ();
         break;
 
       default:
@@ -663,133 +775,133 @@ namespace calc {
           switch (yyn)
             {
   case 4: // s_exp: T_L_PAREN1 s_exp_list T_R_PAREN1
-#line 56 "./Parser.yy"
+#line 62 "./Parser.yy"
                                    {}
-#line 669 "Parser.cpp"
+#line 781 "Parser.cpp"
     break;
 
   case 5: // s_exp: T_L_PAREN2 s_exp_list T_R_PAREN2
-#line 57 "./Parser.yy"
+#line 63 "./Parser.yy"
                                    {}
-#line 675 "Parser.cpp"
+#line 787 "Parser.cpp"
     break;
 
   case 6: // s_exp: T_L_BRACK s_exp s_exp s_exp T_R_BRACK
-#line 58 "./Parser.yy"
+#line 64 "./Parser.yy"
                                         {}
-#line 681 "Parser.cpp"
+#line 793 "Parser.cpp"
     break;
 
   case 8: // s_exp_list: s_exp s_exp_list
-#line 62 "./Parser.yy"
+#line 68 "./Parser.yy"
                    {printf("Found s_exp in s_exp list \n");}
-#line 687 "Parser.cpp"
+#line 799 "Parser.cpp"
     break;
 
   case 9: // s_exp_list: id s_exp_list
-#line 63 "./Parser.yy"
+#line 69 "./Parser.yy"
                    {printf("Found id in s_exp list \n");}
-#line 693 "Parser.cpp"
+#line 805 "Parser.cpp"
     break;
 
   case 10: // id: T_QUOTE s_exp
-#line 67 "./Parser.yy"
+#line 73 "./Parser.yy"
                   {printf("Found id : Quoted s_exp \n");}
-#line 699 "Parser.cpp"
+#line 811 "Parser.cpp"
     break;
 
   case 11: // id: T_QUOTE id
-#line 68 "./Parser.yy"
+#line 74 "./Parser.yy"
                   {printf("Found id : Quoted id \n");}
-#line 705 "Parser.cpp"
+#line 817 "Parser.cpp"
     break;
 
   case 12: // id: T_QUASI_Q id
-#line 69 "./Parser.yy"
+#line 75 "./Parser.yy"
                   {printf("Found id : Quasiquoted id \n");}
-#line 711 "Parser.cpp"
+#line 823 "Parser.cpp"
     break;
 
   case 13: // id: T_QUASI_Q s_exp
-#line 70 "./Parser.yy"
+#line 76 "./Parser.yy"
                   {printf("Found id : Quasiquoted s_exp \n");}
-#line 717 "Parser.cpp"
+#line 829 "Parser.cpp"
     break;
 
   case 14: // id: T_UNQUOTE id
-#line 71 "./Parser.yy"
+#line 77 "./Parser.yy"
                   {printf("Found id : Unquoted id \n");}
-#line 723 "Parser.cpp"
+#line 835 "Parser.cpp"
     break;
 
   case 15: // id: T_UNQUOTE s_exp
-#line 72 "./Parser.yy"
+#line 78 "./Parser.yy"
                   {printf("Found id : Unquoted s_exp \n");}
-#line 729 "Parser.cpp"
+#line 841 "Parser.cpp"
     break;
 
   case 16: // id: T_SPLICE s_exp
-#line 73 "./Parser.yy"
+#line 79 "./Parser.yy"
                   {printf("Found id : Spliced s_exp \n");}
-#line 735 "Parser.cpp"
+#line 847 "Parser.cpp"
     break;
 
   case 17: // id: T_FALSE
-#line 74 "./Parser.yy"
-                  {printf("Found id : False \n");}
-#line 741 "Parser.cpp"
+#line 80 "./Parser.yy"
+                  {printf("Found id : False \n"); std::cout << "False" << std::endl;}
+#line 853 "Parser.cpp"
     break;
 
   case 18: // id: T_TRUE
-#line 75 "./Parser.yy"
-                  {printf("Found id : True \n");}
-#line 747 "Parser.cpp"
+#line 81 "./Parser.yy"
+                  {printf("Found id : True \n"); std::cout << "True" << std::endl;}
+#line 859 "Parser.cpp"
     break;
 
   case 19: // id: T_INT
-#line 76 "./Parser.yy"
-                  {printf("Found id : Int Const\n");}
-#line 753 "Parser.cpp"
+#line 82 "./Parser.yy"
+                  {printf("Found id : Int Const\n"); std::cout << yystack_[0].value.as < int > () << std::endl;}
+#line 865 "Parser.cpp"
     break;
 
   case 20: // id: T_FLOAT
-#line 77 "./Parser.yy"
-                  {printf("Found id : Float Const\n");}
-#line 759 "Parser.cpp"
+#line 83 "./Parser.yy"
+                  {printf("Found id : Float Const\n"); std::cout << yystack_[0].value.as < float > () << std::endl;}
+#line 871 "Parser.cpp"
     break;
 
   case 21: // id: T_CHAR
-#line 78 "./Parser.yy"
-                  {printf("Found id : Char Const\n");}
-#line 765 "Parser.cpp"
+#line 84 "./Parser.yy"
+                  {printf("Found id : Char Const\n"); }
+#line 877 "Parser.cpp"
     break;
 
   case 22: // id: T_STRING
-#line 79 "./Parser.yy"
-                  {printf("Found id : String Const\n");}
-#line 771 "Parser.cpp"
+#line 85 "./Parser.yy"
+                  {printf("Found id : String Const\n"); std::cout << yystack_[0].value.as < std::string > () << std::endl;}
+#line 883 "Parser.cpp"
     break;
 
   case 23: // id: T_KEYWORD
-#line 80 "./Parser.yy"
-                  {printf("Found id : Keyword \n");}
-#line 777 "Parser.cpp"
+#line 86 "./Parser.yy"
+                  {printf("Found id : Keyword \n");std::cout << yystack_[0].value.as < std::string > () << std::endl;}
+#line 889 "Parser.cpp"
     break;
 
   case 24: // id: T_ATOM
-#line 81 "./Parser.yy"
-                  {printf("Found id : Atom \n");}
-#line 783 "Parser.cpp"
+#line 87 "./Parser.yy"
+                  {printf("Found id : Atom \n"); std::cout << yystack_[0].value.as < std::string > () << std::endl;}
+#line 895 "Parser.cpp"
     break;
 
   case 25: // id: T_NIL
-#line 82 "./Parser.yy"
+#line 88 "./Parser.yy"
                   {printf("Found id : Nil \n");}
-#line 789 "Parser.cpp"
+#line 901 "Parser.cpp"
     break;
 
 
-#line 793 "Parser.cpp"
+#line 905 "Parser.cpp"
 
             default:
               break;
@@ -1078,9 +1190,9 @@ namespace calc {
   const signed char
   Parser::yyrline_[] =
   {
-       0,    51,    51,    52,    56,    57,    58,    61,    62,    63,
-      67,    68,    69,    70,    71,    72,    73,    74,    75,    76,
-      77,    78,    79,    80,    81,    82
+       0,    57,    57,    58,    62,    63,    64,    67,    68,    69,
+      73,    74,    75,    76,    77,    78,    79,    80,    81,    82,
+      83,    84,    85,    86,    87,    88
   };
 
   void
@@ -1161,9 +1273,9 @@ namespace calc {
 
 #line 18 "./Parser.yy"
 } // calc
-#line 1165 "Parser.cpp"
+#line 1277 "Parser.cpp"
 
-#line 85 "./Parser.yy"
+#line 91 "./Parser.yy"
 
 
 void calc::Parser::error(const std::string& msg) {
