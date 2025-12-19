@@ -510,8 +510,9 @@ namespace calc {
         S_YYACCEPT = 24,                         // $accept
         S_input = 25,                            // input
         S_s_exp = 26,                            // s_exp
-        S_s_exp_list = 27,                       // s_exp_list
-        S_id = 28                                // id
+        S_s_exp_no_list = 27,                    // s_exp_no_list
+        S_s_exp_list = 28,                       // s_exp_list
+        S_id = 29                                // id
       };
     };
 
@@ -1322,7 +1323,7 @@ switch (yykind)
 
 #if YYDEBUG
     // YYRLINE[YYN] -- Source line where rule number YYN was defined.
-    static const signed char yyrline_[];
+    static const unsigned char yyrline_[];
     /// Report on the debug stream that the rule \a r is going to be reduced.
     virtual void yy_reduce_print_ (int r) const;
     /// Print the state stack on the debug stream.
@@ -1549,9 +1550,9 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 40,     ///< Last index in yytable_.
-      yynnts_ = 5,  ///< Number of nonterminal symbols.
-      yyfinal_ = 24 ///< Termination state number.
+      yylast_ = 57,     ///< Last index in yytable_.
+      yynnts_ = 6,  ///< Number of nonterminal symbols.
+      yyfinal_ = 26 ///< Termination state number.
     };
 
 
@@ -1563,7 +1564,7 @@ switch (yykind)
 
 #line 18 "./Parser.yy"
 } // calc
-#line 1567 "Parser.hpp"
+#line 1568 "Parser.hpp"
 
 
 

@@ -634,27 +634,23 @@ case 1:
 YY_RULE_SETUP
 #line 18 "Lexer.l"
 {
-  #ifdef NDEBUG
   printf("Found Token : T \n");
-  #endif
   yylval->build<bool>(true);
   return Parser::token::T_TRUE;
 }
 	YY_BREAK
 case 2:
 YY_RULE_SETUP
-#line 25 "Lexer.l"
+#line 23 "Lexer.l"
 {
-  #ifdef NDEBUG
   printf("Found Token : F \n");
-  #endif
   yylval->build<bool>(false);
   return Parser::token::T_FALSE;
 }
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 32 "Lexer.l"
+#line 28 "Lexer.l"
 {
   printf("Found Token : INTEGER \n");
   yylval->build<int>(std::stoi(yytext));
@@ -663,7 +659,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 4:
 YY_RULE_SETUP
-#line 37 "Lexer.l"
+#line 33 "Lexer.l"
 {
   printf("Found Token : FLOAT \n");
   yylval->build<float>(std::stof(yytext));
@@ -672,7 +668,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 5:
 YY_RULE_SETUP
-#line 42 "Lexer.l"
+#line 38 "Lexer.l"
 {
   printf("Found Token : CHAR \n");
   return Parser::token::T_CHAR;
@@ -681,7 +677,7 @@ YY_RULE_SETUP
 case 6:
 /* rule 6 can match eol */
 YY_RULE_SETUP
-#line 46 "Lexer.l"
+#line 42 "Lexer.l"
 {
   printf("Found Token : STRING \n");
   yylval->build<std::string>(yytext);
@@ -690,7 +686,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 7:
 YY_RULE_SETUP
-#line 52 "Lexer.l"
+#line 48 "Lexer.l"
 {
   printf("Found Token : ATOM \n");
   yylval->build<std::string>(yytext);
@@ -699,7 +695,7 @@ YY_RULE_SETUP
 	YY_BREAK
 case 8:
 YY_RULE_SETUP
-#line 57 "Lexer.l"
+#line 53 "Lexer.l"
 {
   printf("Found Token : KEYWORD \n");
   yylval->build<std::string>(yytext);
@@ -708,91 +704,91 @@ YY_RULE_SETUP
 	YY_BREAK
 case 9:
 YY_RULE_SETUP
-#line 63 "Lexer.l"
+#line 59 "Lexer.l"
 {printf("Found Token : QUOTE \n");return Parser::token::T_QUOTE;}
 	YY_BREAK
 case 10:
 YY_RULE_SETUP
-#line 64 "Lexer.l"
+#line 60 "Lexer.l"
 {printf("Found Token : QUASIQUOTE \n");return Parser::token::T_QUASI_Q;}
 	YY_BREAK
 case 11:
 YY_RULE_SETUP
-#line 65 "Lexer.l"
+#line 61 "Lexer.l"
 {printf("Found Token : UNQUOTE \n");return Parser::token::T_UNQUOTE;}
 	YY_BREAK
 case 12:
 YY_RULE_SETUP
-#line 66 "Lexer.l"
+#line 62 "Lexer.l"
 {printf("Found Token : SPLICE \n");return Parser::token::T_SPLICE;}
 	YY_BREAK
 case 13:
 YY_RULE_SETUP
-#line 68 "Lexer.l"
+#line 64 "Lexer.l"
 {printf("Found Token : LP_1 \n");return Parser::token::T_L_PAREN1;}
 	YY_BREAK
 case 14:
 YY_RULE_SETUP
-#line 69 "Lexer.l"
+#line 65 "Lexer.l"
 {printf("Found Token : RP_1 \n");return Parser::token::T_R_PAREN1;}
 	YY_BREAK
 case 15:
 YY_RULE_SETUP
-#line 70 "Lexer.l"
+#line 66 "Lexer.l"
 {printf("Found Token : NIL_1 \n");return Parser::token::T_NIL;}
 	YY_BREAK
 case 16:
 YY_RULE_SETUP
-#line 72 "Lexer.l"
+#line 68 "Lexer.l"
 {printf("Found Token : LP_2 \n");return Parser::token::T_L_PAREN2;}
 	YY_BREAK
 case 17:
 YY_RULE_SETUP
-#line 73 "Lexer.l"
+#line 69 "Lexer.l"
 {printf("Found Token : RP_2 \n");return Parser::token::T_R_PAREN2;}
 	YY_BREAK
 case 18:
 YY_RULE_SETUP
-#line 74 "Lexer.l"
+#line 70 "Lexer.l"
 {printf("Found Token : NIL_2 \n");return Parser::token::T_NIL;}
 	YY_BREAK
 case 19:
 YY_RULE_SETUP
-#line 76 "Lexer.l"
+#line 72 "Lexer.l"
 {printf("Found Token : LP_2 \n");return Parser::token::T_L_BRACK;}
 	YY_BREAK
 case 20:
 YY_RULE_SETUP
-#line 77 "Lexer.l"
+#line 73 "Lexer.l"
 {printf("Found Token : RP_2 \n");return Parser::token::T_R_BRACK;}
 	YY_BREAK
 case 21:
 YY_RULE_SETUP
-#line 78 "Lexer.l"
+#line 74 "Lexer.l"
 {printf("Found Token : NIL_2 \n");return Parser::token::T_NIL;}
 	YY_BREAK
 case 22:
 YY_RULE_SETUP
-#line 80 "Lexer.l"
+#line 76 "Lexer.l"
 // ignore all whitespace
 	YY_BREAK
 case 23:
 /* rule 23 can match eol */
 YY_RULE_SETUP
-#line 81 "Lexer.l"
+#line 77 "Lexer.l"
 ;
 	YY_BREAK
 case 24:
 YY_RULE_SETUP
-#line 82 "Lexer.l"
+#line 78 "Lexer.l"
 ;
 	YY_BREAK
 case 25:
 YY_RULE_SETUP
-#line 84 "Lexer.l"
+#line 80 "Lexer.l"
 YY_FATAL_ERROR( "flex scanner jammed" );
 	YY_BREAK
-#line 795 "Scanner.cpp"
+#line 791 "Scanner.cpp"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1755,7 +1751,7 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 84 "Lexer.l"
+#line 80 "Lexer.l"
 
  
 //.    {return Parser::token::T_ERROR;} 

@@ -34,58 +34,114 @@
 
 %token T_ERROR
 
+%token T_DEFINE T_COND T_EVAL T_READ T_LAMBDA
+
 %token T_L_PAREN1 T_R_PAREN1
 %token T_L_PAREN2 T_R_PAREN2
 %token T_L_BRACK T_R_BRACK
 
 %token <std::string> T_ATOM
-%token <std::string> T_KEYWORD
+%token <std::string> T_KEYWORD // Keyword means parameter names in functions !
 %token <std::string> T_SYMBOL
 
 %token T_NIL
 %token T_QUOTE T_QUASI_Q T_UNQUOTE T_SPLICE
 
-%token <bool> T_FALSE
-%token <bool> T_TRUE
+%token <bool>  T_FALSE
+%token <bool>  T_TRUE
 %token <float> T_FLOAT
-%token <int> T_INT
-%token <char> T_CHAR
+%token <int>   T_INT
+%token <char>  T_CHAR
 %token <std::string> T_STRING
 
 %%
 
 input:
-| s_exp input
+| s_exp input ;
 ;
 
 s_exp:
-  T_L_PAREN1 s_exp_list T_R_PAREN1 {}
-| T_L_PAREN2 s_exp_list T_R_PAREN2 {}
-| T_L_BRACK s_exp s_exp s_exp T_R_BRACK {}
+  T_L_PAREN1 s_exp_list T_R_PAREN1 {
+    std::cout << "Found s_exp" << std::endl;  
+  }
+| T_L_PAREN2 s_exp_list T_R_PAREN2 {
+    std::cout << "Found s_exp" << std::endl;  
+  }
+| T_L_BRACK s_exp_no_list s_exp_no_list s_exp_no_list T_R_BRACK {
+    std::cout << "Found s_exp" << std::endl;  
+  }
+;
+
+s_exp_no_list:
+  id    {}
+| s_exp {}
 ;
 
 s_exp_list:
-| s_exp s_exp_list {printf("Found s_exp in s_exp list \n");}
-| id s_exp_list    {printf("Found id in s_exp list \n");}
+| s_exp s_exp_list {
+    printf("Found s_exp in s_exp list \n");
+  }
+| id s_exp_list    {
+    printf("Found id in s_exp list \n");
+  }
 ;
 
 id:
-  T_QUOTE s_exp   {printf("Found id : Quoted s_exp \n");}
-| T_QUOTE id      {printf("Found id : Quoted id \n");}
-| T_QUASI_Q id    {printf("Found id : Quasiquoted id \n");}
-| T_QUASI_Q s_exp {printf("Found id : Quasiquoted s_exp \n");}
-| T_UNQUOTE id    {printf("Found id : Unquoted id \n");}
-| T_UNQUOTE s_exp {printf("Found id : Unquoted s_exp \n");}
-| T_SPLICE s_exp  {printf("Found id : Spliced s_exp \n");}
-| T_FALSE         {printf("Found id : False \n"); std::cout << "False" << std::endl;}
-| T_TRUE          {printf("Found id : True \n"); std::cout << "True" << std::endl;}
-| T_INT           {printf("Found id : Int Const\n"); std::cout << $1 << std::endl;}
-| T_FLOAT         {printf("Found id : Float Const\n"); std::cout << $1 << std::endl;}
-| T_CHAR          {printf("Found id : Char Const\n"); }
-| T_STRING        {printf("Found id : String Const\n"); std::cout << $1 << std::endl;}
-| T_KEYWORD       {printf("Found id : Keyword \n");std::cout << $1 << std::endl;}
-| T_ATOM          {printf("Found id : Atom \n"); std::cout << $1 << std::endl;}
-| T_NIL           {printf("Found id : Nil \n");}
+  T_QUOTE s_exp   {
+    printf("Found id : Quoted s_exp \n");
+  }
+| T_QUOTE id      {
+    printf("Found id : Quoted id \n");
+  }
+| T_QUASI_Q id    {
+    printf("Found id : Quasiquoted id \n");
+  }
+| T_QUASI_Q s_exp {
+    printf("Found id : Quasiquoted s_exp \n");
+  }
+| T_UNQUOTE id    {
+    printf("Found id : Unquoted id \n");
+  }
+| T_UNQUOTE s_exp {
+    printf("Found id : Unquoted s_exp \n");
+  }
+| T_SPLICE s_exp  {
+    printf("Found id : Spliced s_exp \n");
+  }
+| T_FALSE         {
+    printf("Found id : False \n");
+    std::cout << "False" << std::endl;
+  }
+| T_TRUE          {
+    printf("Found id : True \n");
+    std::cout << "True" << std::endl;
+  }
+| T_INT           {
+    printf("Found id : Int Const\n");
+    std::cout << $1 << std::endl;
+  }
+| T_FLOAT         {
+    printf("Found id : Float Const\n");
+    std::cout << $1 << std::endl;
+  }
+| T_CHAR          {
+    printf("Found id : Char Const\n");
+  }
+| T_STRING        {
+    printf("Found id : String Const\n");
+    std::cout << $1 << std::endl;
+  }
+| T_KEYWORD       {
+    printf("Found id : Keyword \n");
+    std::cout << $1 << std::endl;
+  }
+| T_ATOM          {
+    printf("Found id : Atom \n");
+    std::cout << $1 << std::endl;
+  }
+| T_NIL           {
+    printf("Found id : Nil \n");
+  }
 ;
 
 %%

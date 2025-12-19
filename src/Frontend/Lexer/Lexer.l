@@ -13,7 +13,30 @@
 
  
 %%
- 
+
+"define"   {
+  printf("Found Token : Define \n");
+  return Parser::token::T_DEFINE;
+}
+"cond"     {
+  printf("Found Token : cond \n");
+  return Parser::token::T_COND;
+}
+"eval"     {
+  printf("Found Token : eval \n");
+  return Parser::token::T_EVAL;
+}
+"read"     {
+  printf("Found Token : read \n");
+  return Parser::token::T_READ;
+}
+"lambda"   {
+  printf("Found Token : lambda \n");
+  return Parser::token::T_LAMBDA;
+}
+
+
+
 "#t"       {
   printf("Found Token : T \n");
   yylval->build<bool>(true);
