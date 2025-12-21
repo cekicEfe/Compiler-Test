@@ -398,7 +398,6 @@ namespace calc {
 
       // T_ATOM
       // T_KEYWORD
-      // T_SYMBOL
       // T_STRING
       char dummy5[sizeof (std::string)];
     };
@@ -445,26 +444,32 @@ namespace calc {
     YYerror = 256,                 // error
     YYUNDEF = 257,                 // "invalid token"
     T_ERROR = 258,                 // T_ERROR
-    T_L_PAREN1 = 259,              // T_L_PAREN1
-    T_R_PAREN1 = 260,              // T_R_PAREN1
-    T_L_PAREN2 = 261,              // T_L_PAREN2
-    T_R_PAREN2 = 262,              // T_R_PAREN2
-    T_L_BRACK = 263,               // T_L_BRACK
-    T_R_BRACK = 264,               // T_R_BRACK
-    T_ATOM = 265,                  // T_ATOM
-    T_KEYWORD = 266,               // T_KEYWORD
-    T_SYMBOL = 267,                // T_SYMBOL
-    T_NIL = 268,                   // T_NIL
-    T_QUOTE = 269,                 // T_QUOTE
-    T_QUASI_Q = 270,               // T_QUASI_Q
-    T_UNQUOTE = 271,               // T_UNQUOTE
-    T_SPLICE = 272,                // T_SPLICE
-    T_FALSE = 273,                 // T_FALSE
-    T_TRUE = 274,                  // T_TRUE
-    T_FLOAT = 275,                 // T_FLOAT
-    T_INT = 276,                   // T_INT
-    T_CHAR = 277,                  // T_CHAR
-    T_STRING = 278                 // T_STRING
+    T_DEFINE = 259,                // T_DEFINE
+    T_COND = 260,                  // T_COND
+    T_EVAL = 261,                  // T_EVAL
+    T_READ = 262,                  // T_READ
+    T_LAMBDA = 263,                // T_LAMBDA
+    T_DEFINE_CLASS = 264,          // T_DEFINE_CLASS
+    T_DEFINE_METHOD = 265,         // T_DEFINE_METHOD
+    T_L_PAREN1 = 266,              // T_L_PAREN1
+    T_R_PAREN1 = 267,              // T_R_PAREN1
+    T_L_PAREN2 = 268,              // T_L_PAREN2
+    T_R_PAREN2 = 269,              // T_R_PAREN2
+    T_L_BRACK = 270,               // T_L_BRACK
+    T_R_BRACK = 271,               // T_R_BRACK
+    T_ATOM = 272,                  // T_ATOM
+    T_KEYWORD = 273,               // T_KEYWORD
+    T_NIL = 274,                   // T_NIL
+    T_QUOTE = 275,                 // T_QUOTE
+    T_QUASI_Q = 276,               // T_QUASI_Q
+    T_UNQUOTE = 277,               // T_UNQUOTE
+    T_SPLICE = 278,                // T_SPLICE
+    T_FALSE = 279,                 // T_FALSE
+    T_TRUE = 280,                  // T_TRUE
+    T_FLOAT = 281,                 // T_FLOAT
+    T_INT = 282,                   // T_INT
+    T_CHAR = 283,                  // T_CHAR
+    T_STRING = 284                 // T_STRING
       };
       /// Backward compatibility alias (Bison 3.6).
       typedef token_kind_type yytokentype;
@@ -481,38 +486,45 @@ namespace calc {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 24, ///< Number of tokens.
+        YYNTOKENS = 30, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // "end of file"
         S_YYerror = 1,                           // error
         S_YYUNDEF = 2,                           // "invalid token"
         S_T_ERROR = 3,                           // T_ERROR
-        S_T_L_PAREN1 = 4,                        // T_L_PAREN1
-        S_T_R_PAREN1 = 5,                        // T_R_PAREN1
-        S_T_L_PAREN2 = 6,                        // T_L_PAREN2
-        S_T_R_PAREN2 = 7,                        // T_R_PAREN2
-        S_T_L_BRACK = 8,                         // T_L_BRACK
-        S_T_R_BRACK = 9,                         // T_R_BRACK
-        S_T_ATOM = 10,                           // T_ATOM
-        S_T_KEYWORD = 11,                        // T_KEYWORD
-        S_T_SYMBOL = 12,                         // T_SYMBOL
-        S_T_NIL = 13,                            // T_NIL
-        S_T_QUOTE = 14,                          // T_QUOTE
-        S_T_QUASI_Q = 15,                        // T_QUASI_Q
-        S_T_UNQUOTE = 16,                        // T_UNQUOTE
-        S_T_SPLICE = 17,                         // T_SPLICE
-        S_T_FALSE = 18,                          // T_FALSE
-        S_T_TRUE = 19,                           // T_TRUE
-        S_T_FLOAT = 20,                          // T_FLOAT
-        S_T_INT = 21,                            // T_INT
-        S_T_CHAR = 22,                           // T_CHAR
-        S_T_STRING = 23,                         // T_STRING
-        S_YYACCEPT = 24,                         // $accept
-        S_input = 25,                            // input
-        S_s_exp = 26,                            // s_exp
-        S_s_exp_no_list = 27,                    // s_exp_no_list
-        S_s_exp_list = 28,                       // s_exp_list
-        S_id = 29                                // id
+        S_T_DEFINE = 4,                          // T_DEFINE
+        S_T_COND = 5,                            // T_COND
+        S_T_EVAL = 6,                            // T_EVAL
+        S_T_READ = 7,                            // T_READ
+        S_T_LAMBDA = 8,                          // T_LAMBDA
+        S_T_DEFINE_CLASS = 9,                    // T_DEFINE_CLASS
+        S_T_DEFINE_METHOD = 10,                  // T_DEFINE_METHOD
+        S_T_L_PAREN1 = 11,                       // T_L_PAREN1
+        S_T_R_PAREN1 = 12,                       // T_R_PAREN1
+        S_T_L_PAREN2 = 13,                       // T_L_PAREN2
+        S_T_R_PAREN2 = 14,                       // T_R_PAREN2
+        S_T_L_BRACK = 15,                        // T_L_BRACK
+        S_T_R_BRACK = 16,                        // T_R_BRACK
+        S_T_ATOM = 17,                           // T_ATOM
+        S_T_KEYWORD = 18,                        // T_KEYWORD
+        S_T_NIL = 19,                            // T_NIL
+        S_T_QUOTE = 20,                          // T_QUOTE
+        S_T_QUASI_Q = 21,                        // T_QUASI_Q
+        S_T_UNQUOTE = 22,                        // T_UNQUOTE
+        S_T_SPLICE = 23,                         // T_SPLICE
+        S_T_FALSE = 24,                          // T_FALSE
+        S_T_TRUE = 25,                           // T_TRUE
+        S_T_FLOAT = 26,                          // T_FLOAT
+        S_T_INT = 27,                            // T_INT
+        S_T_CHAR = 28,                           // T_CHAR
+        S_T_STRING = 29,                         // T_STRING
+        S_YYACCEPT = 30,                         // $accept
+        S_input = 31,                            // input
+        S_define = 32,                           // define
+        S_s_exp = 33,                            // s_exp
+        S_s_exp_no_list = 34,                    // s_exp_no_list
+        S_s_exp_list = 35,                       // s_exp_list
+        S_id = 36                                // id
       };
     };
 
@@ -566,7 +578,6 @@ namespace calc {
 
       case symbol_kind::S_T_ATOM: // T_ATOM
       case symbol_kind::S_T_KEYWORD: // T_KEYWORD
-      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
       case symbol_kind::S_T_STRING: // T_STRING
         value.move< std::string > (std::move (that.value));
         break;
@@ -695,7 +706,6 @@ switch (yykind)
 
       case symbol_kind::S_T_ATOM: // T_ATOM
       case symbol_kind::S_T_KEYWORD: // T_KEYWORD
-      case symbol_kind::S_T_SYMBOL: // T_SYMBOL
       case symbol_kind::S_T_STRING: // T_STRING
         value.template destroy< std::string > ();
         break;
@@ -949,6 +959,111 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
+      make_T_DEFINE ()
+      {
+        return symbol_type (token::T_DEFINE);
+      }
+#else
+      static
+      symbol_type
+      make_T_DEFINE ()
+      {
+        return symbol_type (token::T_DEFINE);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_COND ()
+      {
+        return symbol_type (token::T_COND);
+      }
+#else
+      static
+      symbol_type
+      make_T_COND ()
+      {
+        return symbol_type (token::T_COND);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_EVAL ()
+      {
+        return symbol_type (token::T_EVAL);
+      }
+#else
+      static
+      symbol_type
+      make_T_EVAL ()
+      {
+        return symbol_type (token::T_EVAL);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_READ ()
+      {
+        return symbol_type (token::T_READ);
+      }
+#else
+      static
+      symbol_type
+      make_T_READ ()
+      {
+        return symbol_type (token::T_READ);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_LAMBDA ()
+      {
+        return symbol_type (token::T_LAMBDA);
+      }
+#else
+      static
+      symbol_type
+      make_T_LAMBDA ()
+      {
+        return symbol_type (token::T_LAMBDA);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_DEFINE_CLASS ()
+      {
+        return symbol_type (token::T_DEFINE_CLASS);
+      }
+#else
+      static
+      symbol_type
+      make_T_DEFINE_CLASS ()
+      {
+        return symbol_type (token::T_DEFINE_CLASS);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_DEFINE_METHOD ()
+      {
+        return symbol_type (token::T_DEFINE_METHOD);
+      }
+#else
+      static
+      symbol_type
+      make_T_DEFINE_METHOD ()
+      {
+        return symbol_type (token::T_DEFINE_METHOD);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
       make_T_L_PAREN1 ()
       {
         return symbol_type (token::T_L_PAREN1);
@@ -1064,21 +1179,6 @@ switch (yykind)
       make_T_KEYWORD (const std::string& v)
       {
         return symbol_type (token::T_KEYWORD, v);
-      }
-#endif
-#if 201103L <= YY_CPLUSPLUS
-      static
-      symbol_type
-      make_T_SYMBOL (std::string v)
-      {
-        return symbol_type (token::T_SYMBOL, std::move (v));
-      }
-#else
-      static
-      symbol_type
-      make_T_SYMBOL (const std::string& v)
-      {
-        return symbol_type (token::T_SYMBOL, v);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1550,9 +1650,9 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 57,     ///< Last index in yytable_.
-      yynnts_ = 6,  ///< Number of nonterminal symbols.
-      yyfinal_ = 26 ///< Termination state number.
+      yylast_ = 154,     ///< Last index in yytable_.
+      yynnts_ = 7,  ///< Number of nonterminal symbols.
+      yyfinal_ = 33 ///< Termination state number.
     };
 
 
@@ -1564,7 +1664,7 @@ switch (yykind)
 
 #line 18 "./Parser.yy"
 } // calc
-#line 1568 "Parser.hpp"
+#line 1668 "Parser.hpp"
 
 
 

@@ -35,6 +35,8 @@
 %token T_ERROR
 
 %token T_DEFINE T_COND T_EVAL T_READ T_LAMBDA
+%token T_DEFINE_CLASS   T_DEFINE_METHOD
+%token T_CLASS_INSTANCE T_METHOD_INSTANCE
 
 %token T_L_PAREN1 T_R_PAREN1
 %token T_L_PAREN2 T_R_PAREN2
@@ -42,7 +44,7 @@
 
 %token <std::string> T_ATOM
 %token <std::string> T_KEYWORD // Keyword means parameter names in functions !
-%token <std::string> T_SYMBOL
+// %token <std::string> T_SYMBOL
 
 %token T_NIL
 %token T_QUOTE T_QUASI_Q T_UNQUOTE T_SPLICE
@@ -58,7 +60,44 @@
 
 input:
 | s_exp input ;
+| define input ;
+| define_class input ;
+| class_instance input ;
 ;
+
+define:
+  T_L_PAREN1 T_DEFINE T_ATOM id T_R_PAREN1 {
+    std::cout << "Found define id pr1" << std::endl;
+  }
+| T_L_PAREN2 T_DEFINE T_ATOM id T_R_PAREN2 {
+    std::cout << "Found define id pr2" << std::endl;
+  }
+| T_L_BRACK T_ATOM T_DEFINE id T_R_BRACK {
+    std::cout << "Found define id infix" << std::endl;
+  }
+;
+
+define_class:
+  T_L_PAREN1 T_DEFINE_CLASS T_ATOM define_class_method_list T_R_PAREN1 {
+    std::cout << "Found define id" << std::endl;
+  }
+| T_L_PAREN2 T_DEFINE_CLASS T_ATOM id T_R_PAREN2 {
+    std::cout << "Found define id" << std::endl;
+  }
+; 
+
+define_class_method_list:
+  T_L_PAREN1 T_R_PAREN2 {
+    
+  }
+| T_L_PAREN2 T_R_PAREN2 {
+    
+  }
+;
+
+class-instance:
+;
+
 
 s_exp:
   T_L_PAREN1 s_exp_list T_R_PAREN1 {

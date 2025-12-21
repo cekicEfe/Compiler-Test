@@ -22,6 +22,22 @@
   printf("Found Token : cond \n");
   return Parser::token::T_COND;
 }
+"define-class" {
+  printf("Found Token : def-class");
+  return Parser::token::T_DEFINE_CLASS;
+}
+"define-method" {
+  printf("Found Token : def-method");
+  return Parser::token::T_DEFINE_METHOD;
+}
+"class-instance" {
+  printf("Found Token : class-instance");
+  return Parser::token::T_CLASS_INSTANCE;
+}
+"method-instance" {
+  printf("Found Token : method-instance");
+  return Parser::token::T_METHOD_INSTANCE;
+}
 "eval"     {
   printf("Found Token : eval \n");
   return Parser::token::T_EVAL;
