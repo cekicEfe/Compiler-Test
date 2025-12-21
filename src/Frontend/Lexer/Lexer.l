@@ -14,6 +14,14 @@
  
 %%
 
+"as"       {
+  printf("Found Token : as \n");
+  return Parser::token::T_AS;
+}
+"any"      {
+  printf("Found Token : any \n");
+  return Parser::token::T_ANY;
+}
 "define"   {
   printf("Found Token : Define \n");
   return Parser::token::T_DEFINE;
@@ -102,14 +110,17 @@
 "("	 {printf("Found Token : LP_1 \n");return Parser::token::T_L_PAREN1;}
 ")"	 {printf("Found Token : RP_1 \n");return Parser::token::T_R_PAREN1;}
 "()" {printf("Found Token : NIL_1 \n");return Parser::token::T_NIL;}
+"'()" {printf("Found Token : NIL_1 \n");return Parser::token::T_NIL;}
 
 "["  {printf("Found Token : LP_2 \n");return Parser::token::T_L_PAREN2;}
 "]"  {printf("Found Token : RP_2 \n");return Parser::token::T_R_PAREN2;}
 "[]" {printf("Found Token : NIL_2 \n");return Parser::token::T_NIL;}
+"'[]" {printf("Found Token : NIL_2 \n");return Parser::token::T_NIL;}
 
 "{"  {printf("Found Token : LP_2 \n");return Parser::token::T_L_BRACK;}
 "}"  {printf("Found Token : RP_2 \n");return Parser::token::T_R_BRACK;}
 "{}" {printf("Found Token : NIL_2 \n");return Parser::token::T_NIL;}
+"'{}" {printf("Found Token : NIL_2 \n");return Parser::token::T_NIL;}
 
 [ \t]; // ignore all whitespace
 [\n] ;

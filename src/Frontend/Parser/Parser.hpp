@@ -449,27 +449,31 @@ namespace calc {
     T_EVAL = 261,                  // T_EVAL
     T_READ = 262,                  // T_READ
     T_LAMBDA = 263,                // T_LAMBDA
-    T_DEFINE_CLASS = 264,          // T_DEFINE_CLASS
-    T_DEFINE_METHOD = 265,         // T_DEFINE_METHOD
-    T_L_PAREN1 = 266,              // T_L_PAREN1
-    T_R_PAREN1 = 267,              // T_R_PAREN1
-    T_L_PAREN2 = 268,              // T_L_PAREN2
-    T_R_PAREN2 = 269,              // T_R_PAREN2
-    T_L_BRACK = 270,               // T_L_BRACK
-    T_R_BRACK = 271,               // T_R_BRACK
-    T_ATOM = 272,                  // T_ATOM
-    T_KEYWORD = 273,               // T_KEYWORD
-    T_NIL = 274,                   // T_NIL
-    T_QUOTE = 275,                 // T_QUOTE
-    T_QUASI_Q = 276,               // T_QUASI_Q
-    T_UNQUOTE = 277,               // T_UNQUOTE
-    T_SPLICE = 278,                // T_SPLICE
-    T_FALSE = 279,                 // T_FALSE
-    T_TRUE = 280,                  // T_TRUE
-    T_FLOAT = 281,                 // T_FLOAT
-    T_INT = 282,                   // T_INT
-    T_CHAR = 283,                  // T_CHAR
-    T_STRING = 284                 // T_STRING
+    T_AS = 264,                    // T_AS
+    T_ANY = 265,                   // T_ANY
+    T_DEFINE_CLASS = 266,          // T_DEFINE_CLASS
+    T_DEFINE_METHOD = 267,         // T_DEFINE_METHOD
+    T_CLASS_INSTANCE = 268,        // T_CLASS_INSTANCE
+    T_METHOD_INSTANCE = 269,       // T_METHOD_INSTANCE
+    T_L_PAREN1 = 270,              // T_L_PAREN1
+    T_R_PAREN1 = 271,              // T_R_PAREN1
+    T_L_PAREN2 = 272,              // T_L_PAREN2
+    T_R_PAREN2 = 273,              // T_R_PAREN2
+    T_L_BRACK = 274,               // T_L_BRACK
+    T_R_BRACK = 275,               // T_R_BRACK
+    T_ATOM = 276,                  // T_ATOM
+    T_KEYWORD = 277,               // T_KEYWORD
+    T_NIL = 278,                   // T_NIL
+    T_QUOTE = 279,                 // T_QUOTE
+    T_QUASI_Q = 280,               // T_QUASI_Q
+    T_UNQUOTE = 281,               // T_UNQUOTE
+    T_SPLICE = 282,                // T_SPLICE
+    T_FALSE = 283,                 // T_FALSE
+    T_TRUE = 284,                  // T_TRUE
+    T_FLOAT = 285,                 // T_FLOAT
+    T_INT = 286,                   // T_INT
+    T_CHAR = 287,                  // T_CHAR
+    T_STRING = 288                 // T_STRING
       };
       /// Backward compatibility alias (Bison 3.6).
       typedef token_kind_type yytokentype;
@@ -486,7 +490,7 @@ namespace calc {
     {
       enum symbol_kind_type
       {
-        YYNTOKENS = 30, ///< Number of tokens.
+        YYNTOKENS = 34, ///< Number of tokens.
         S_YYEMPTY = -2,
         S_YYEOF = 0,                             // "end of file"
         S_YYerror = 1,                           // error
@@ -497,34 +501,44 @@ namespace calc {
         S_T_EVAL = 6,                            // T_EVAL
         S_T_READ = 7,                            // T_READ
         S_T_LAMBDA = 8,                          // T_LAMBDA
-        S_T_DEFINE_CLASS = 9,                    // T_DEFINE_CLASS
-        S_T_DEFINE_METHOD = 10,                  // T_DEFINE_METHOD
-        S_T_L_PAREN1 = 11,                       // T_L_PAREN1
-        S_T_R_PAREN1 = 12,                       // T_R_PAREN1
-        S_T_L_PAREN2 = 13,                       // T_L_PAREN2
-        S_T_R_PAREN2 = 14,                       // T_R_PAREN2
-        S_T_L_BRACK = 15,                        // T_L_BRACK
-        S_T_R_BRACK = 16,                        // T_R_BRACK
-        S_T_ATOM = 17,                           // T_ATOM
-        S_T_KEYWORD = 18,                        // T_KEYWORD
-        S_T_NIL = 19,                            // T_NIL
-        S_T_QUOTE = 20,                          // T_QUOTE
-        S_T_QUASI_Q = 21,                        // T_QUASI_Q
-        S_T_UNQUOTE = 22,                        // T_UNQUOTE
-        S_T_SPLICE = 23,                         // T_SPLICE
-        S_T_FALSE = 24,                          // T_FALSE
-        S_T_TRUE = 25,                           // T_TRUE
-        S_T_FLOAT = 26,                          // T_FLOAT
-        S_T_INT = 27,                            // T_INT
-        S_T_CHAR = 28,                           // T_CHAR
-        S_T_STRING = 29,                         // T_STRING
-        S_YYACCEPT = 30,                         // $accept
-        S_input = 31,                            // input
-        S_define = 32,                           // define
-        S_s_exp = 33,                            // s_exp
-        S_s_exp_no_list = 34,                    // s_exp_no_list
-        S_s_exp_list = 35,                       // s_exp_list
-        S_id = 36                                // id
+        S_T_AS = 9,                              // T_AS
+        S_T_ANY = 10,                            // T_ANY
+        S_T_DEFINE_CLASS = 11,                   // T_DEFINE_CLASS
+        S_T_DEFINE_METHOD = 12,                  // T_DEFINE_METHOD
+        S_T_CLASS_INSTANCE = 13,                 // T_CLASS_INSTANCE
+        S_T_METHOD_INSTANCE = 14,                // T_METHOD_INSTANCE
+        S_T_L_PAREN1 = 15,                       // T_L_PAREN1
+        S_T_R_PAREN1 = 16,                       // T_R_PAREN1
+        S_T_L_PAREN2 = 17,                       // T_L_PAREN2
+        S_T_R_PAREN2 = 18,                       // T_R_PAREN2
+        S_T_L_BRACK = 19,                        // T_L_BRACK
+        S_T_R_BRACK = 20,                        // T_R_BRACK
+        S_T_ATOM = 21,                           // T_ATOM
+        S_T_KEYWORD = 22,                        // T_KEYWORD
+        S_T_NIL = 23,                            // T_NIL
+        S_T_QUOTE = 24,                          // T_QUOTE
+        S_T_QUASI_Q = 25,                        // T_QUASI_Q
+        S_T_UNQUOTE = 26,                        // T_UNQUOTE
+        S_T_SPLICE = 27,                         // T_SPLICE
+        S_T_FALSE = 28,                          // T_FALSE
+        S_T_TRUE = 29,                           // T_TRUE
+        S_T_FLOAT = 30,                          // T_FLOAT
+        S_T_INT = 31,                            // T_INT
+        S_T_CHAR = 32,                           // T_CHAR
+        S_T_STRING = 33,                         // T_STRING
+        S_YYACCEPT = 34,                         // $accept
+        S_input = 35,                            // input
+        S_define = 36,                           // define
+        S_define_class = 37,                     // define_class
+        S_define_class_method_list_pre = 38,     // define_class_method_list_pre
+        S_define_class_method_list = 39,         // define_class_method_list
+        S_define_class_method = 40,              // define_class_method
+        S_define_class_method_args = 41,         // define_class_method_args
+        S_args = 42,                             // args
+        S_s_exp = 43,                            // s_exp
+        S_s_exp_no_list = 44,                    // s_exp_no_list
+        S_s_exp_list = 45,                       // s_exp_list
+        S_id = 46                                // id
       };
     };
 
@@ -1034,6 +1048,36 @@ switch (yykind)
 #if 201103L <= YY_CPLUSPLUS
       static
       symbol_type
+      make_T_AS ()
+      {
+        return symbol_type (token::T_AS);
+      }
+#else
+      static
+      symbol_type
+      make_T_AS ()
+      {
+        return symbol_type (token::T_AS);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_ANY ()
+      {
+        return symbol_type (token::T_ANY);
+      }
+#else
+      static
+      symbol_type
+      make_T_ANY ()
+      {
+        return symbol_type (token::T_ANY);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
       make_T_DEFINE_CLASS ()
       {
         return symbol_type (token::T_DEFINE_CLASS);
@@ -1059,6 +1103,36 @@ switch (yykind)
       make_T_DEFINE_METHOD ()
       {
         return symbol_type (token::T_DEFINE_METHOD);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_CLASS_INSTANCE ()
+      {
+        return symbol_type (token::T_CLASS_INSTANCE);
+      }
+#else
+      static
+      symbol_type
+      make_T_CLASS_INSTANCE ()
+      {
+        return symbol_type (token::T_CLASS_INSTANCE);
+      }
+#endif
+#if 201103L <= YY_CPLUSPLUS
+      static
+      symbol_type
+      make_T_METHOD_INSTANCE ()
+      {
+        return symbol_type (token::T_METHOD_INSTANCE);
+      }
+#else
+      static
+      symbol_type
+      make_T_METHOD_INSTANCE ()
+      {
+        return symbol_type (token::T_METHOD_INSTANCE);
       }
 #endif
 #if 201103L <= YY_CPLUSPLUS
@@ -1650,9 +1724,9 @@ switch (yykind)
     /// Constants.
     enum
     {
-      yylast_ = 154,     ///< Last index in yytable_.
-      yynnts_ = 7,  ///< Number of nonterminal symbols.
-      yyfinal_ = 33 ///< Termination state number.
+      yylast_ = 123,     ///< Last index in yytable_.
+      yynnts_ = 13,  ///< Number of nonterminal symbols.
+      yyfinal_ = 32 ///< Termination state number.
     };
 
 
@@ -1664,7 +1738,7 @@ switch (yykind)
 
 #line 18 "./Parser.yy"
 } // calc
-#line 1668 "Parser.hpp"
+#line 1742 "Parser.hpp"
 
 
 

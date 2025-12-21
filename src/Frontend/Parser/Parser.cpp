@@ -767,219 +767,251 @@ namespace calc {
         {
           switch (yyn)
             {
-  case 5: // define: T_L_PAREN1 T_DEFINE T_ATOM id T_R_PAREN1
-#line 66 "./Parser.yy"
+  case 6: // define: T_L_PAREN1 T_DEFINE T_ATOM id T_R_PAREN1
+#line 71 "./Parser.yy"
                                            {
-    std::cout << "Found define id" << std::endl;
+    std::cout << "Found define id pr1" << std::endl;
   }
 #line 776 "Parser.cpp"
     break;
 
-  case 6: // define: T_L_PAREN2 T_DEFINE T_ATOM id T_R_PAREN2
-#line 69 "./Parser.yy"
+  case 7: // define: T_L_PAREN2 T_DEFINE T_ATOM id T_R_PAREN2
+#line 74 "./Parser.yy"
                                            {
-    std::cout << "Found define id" << std::endl;
+    std::cout << "Found define id pr2" << std::endl;
   }
 #line 784 "Parser.cpp"
     break;
 
-  case 7: // define: T_L_BRACK T_ATOM T_DEFINE id T_R_BRACK
-#line 72 "./Parser.yy"
-                                         {
-    std::cout << "Found define id" << std::endl;
+  case 8: // define_class: T_L_PAREN1 T_DEFINE_CLASS T_ATOM T_AS T_ATOM define_class_method_list_pre T_R_PAREN1
+#line 81 "./Parser.yy"
+                                                                                       {
+    std::cout << "Found : define typeclass" << std::endl;
   }
 #line 792 "Parser.cpp"
     break;
 
-  case 8: // s_exp: T_L_PAREN1 s_exp_list T_R_PAREN1
-#line 78 "./Parser.yy"
-                                   {
-    std::cout << "Found s_exp" << std::endl;  
+  case 9: // define_class: T_L_PAREN2 T_DEFINE_CLASS T_ATOM T_AS T_ATOM define_class_method_list_pre T_R_PAREN2
+#line 84 "./Parser.yy"
+                                                                                       {
+    std::cout << "Found : define typeclass" << std::endl;
   }
 #line 800 "Parser.cpp"
     break;
 
-  case 9: // s_exp: T_L_PAREN2 s_exp_list T_R_PAREN2
-#line 81 "./Parser.yy"
-                                   {
-    std::cout << "Found s_exp" << std::endl;  
+  case 13: // define_class_method_list: define_class_method define_class_method_list
+#line 93 "./Parser.yy"
+                                               {
+    std::cout << "Found : define typeclass method list" << std::endl;
   }
 #line 808 "Parser.cpp"
     break;
 
-  case 10: // s_exp: T_L_BRACK s_exp_no_list s_exp_no_list s_exp_no_list T_R_BRACK
-#line 84 "./Parser.yy"
-                                                                {
-    std::cout << "Found s_exp" << std::endl;  
+  case 14: // define_class_method: T_L_PAREN1 T_DEFINE_METHOD T_ATOM define_class_method_args T_R_PAREN1
+#line 98 "./Parser.yy"
+                                                                        {
+    std::cout << "Found : define typeclass method" << std::endl;
   }
 #line 816 "Parser.cpp"
     break;
 
-  case 11: // s_exp_no_list: id
-#line 90 "./Parser.yy"
+  case 15: // define_class_method: T_L_PAREN2 T_DEFINE_METHOD T_ATOM define_class_method_args T_R_PAREN2
+#line 101 "./Parser.yy"
+                                                                        {
+    std::cout << "Found : define typeclass method" << std::endl;
+  }
+#line 824 "Parser.cpp"
+    break;
+
+  case 16: // define_class_method_args: T_L_PAREN1 args T_R_PAREN1
+#line 106 "./Parser.yy"
+                             {
+    std::cout << "Found : define typeclass method args" << std::endl;
+  }
+#line 832 "Parser.cpp"
+    break;
+
+  case 17: // define_class_method_args: T_L_PAREN2 args T_R_PAREN2
+#line 109 "./Parser.yy"
+                             {
+    std::cout << "Found : define typeclass method args" << std::endl;
+  }
+#line 840 "Parser.cpp"
+    break;
+
+  case 19: // args: T_ATOM args
+#line 114 "./Parser.yy"
+              {    
+    std::cout << "Found : args" << std::endl;
+}
+#line 848 "Parser.cpp"
+    break;
+
+  case 20: // s_exp: T_L_PAREN1 s_exp_list T_R_PAREN1
+#line 121 "./Parser.yy"
+                                   {
+    std::cout << "Found s_exp type1" << std::endl;  
+  }
+#line 856 "Parser.cpp"
+    break;
+
+  case 21: // s_exp: T_L_PAREN2 s_exp_list T_R_PAREN2
+#line 124 "./Parser.yy"
+                                   {
+    std::cout << "Found s_exp type2" << std::endl;  
+  }
+#line 864 "Parser.cpp"
+    break;
+
+  case 22: // s_exp: T_L_BRACK s_exp_no_list s_exp_no_list s_exp_no_list T_R_BRACK
+#line 127 "./Parser.yy"
+                                                                {
+    std::cout << "Found s_exp infix" << std::endl;  
+  }
+#line 872 "Parser.cpp"
+    break;
+
+  case 23: // s_exp_no_list: id
+#line 132 "./Parser.yy"
         {}
-#line 822 "Parser.cpp"
+#line 878 "Parser.cpp"
     break;
 
-  case 12: // s_exp_no_list: s_exp
-#line 91 "./Parser.yy"
+  case 24: // s_exp_no_list: s_exp
+#line 133 "./Parser.yy"
         {}
-#line 828 "Parser.cpp"
-    break;
-
-  case 14: // s_exp_list: s_exp s_exp_list
-#line 95 "./Parser.yy"
-                   {
-    printf("Found s_exp in s_exp list \n");
-  }
-#line 836 "Parser.cpp"
-    break;
-
-  case 15: // s_exp_list: id s_exp_list
-#line 98 "./Parser.yy"
-                   {
-    printf("Found id in s_exp list \n");
-  }
-#line 844 "Parser.cpp"
-    break;
-
-  case 16: // id: T_QUOTE s_exp
-#line 104 "./Parser.yy"
-                  {
-    printf("Found id : Quoted s_exp \n");
-  }
-#line 852 "Parser.cpp"
-    break;
-
-  case 17: // id: T_QUOTE id
-#line 107 "./Parser.yy"
-                  {
-    printf("Found id : Quoted id \n");
-  }
-#line 860 "Parser.cpp"
-    break;
-
-  case 18: // id: T_QUASI_Q id
-#line 110 "./Parser.yy"
-                  {
-    printf("Found id : Quasiquoted id \n");
-  }
-#line 868 "Parser.cpp"
-    break;
-
-  case 19: // id: T_QUASI_Q s_exp
-#line 113 "./Parser.yy"
-                  {
-    printf("Found id : Quasiquoted s_exp \n");
-  }
-#line 876 "Parser.cpp"
-    break;
-
-  case 20: // id: T_UNQUOTE id
-#line 116 "./Parser.yy"
-                  {
-    printf("Found id : Unquoted id \n");
-  }
 #line 884 "Parser.cpp"
     break;
 
-  case 21: // id: T_UNQUOTE s_exp
-#line 119 "./Parser.yy"
-                  {
-    printf("Found id : Unquoted s_exp \n");
+  case 26: // s_exp_list: s_exp s_exp_list
+#line 136 "./Parser.yy"
+                   {
+    printf("Found s_exp in s_exp list \n");
   }
 #line 892 "Parser.cpp"
     break;
 
-  case 22: // id: T_SPLICE s_exp
-#line 122 "./Parser.yy"
-                  {
-    printf("Found id : Spliced s_exp \n");
+  case 27: // s_exp_list: id s_exp_list
+#line 139 "./Parser.yy"
+                   {
+    printf("Found id in s_exp list \n");
   }
 #line 900 "Parser.cpp"
     break;
 
-  case 23: // id: T_FALSE
-#line 125 "./Parser.yy"
+  case 28: // id: T_QUOTE s_exp
+#line 146 "./Parser.yy"
+                  {
+    printf("Found id : Quoted s_exp \n");
+  }
+#line 908 "Parser.cpp"
+    break;
+
+  case 29: // id: T_QUOTE id
+#line 149 "./Parser.yy"
+                  {
+    printf("Found id : Quoted id \n");
+  }
+#line 916 "Parser.cpp"
+    break;
+
+  case 30: // id: T_QUASI_Q id
+#line 152 "./Parser.yy"
+                  {
+    printf("Found id : Quasiquoted id \n");
+  }
+#line 924 "Parser.cpp"
+    break;
+
+  case 31: // id: T_QUASI_Q s_exp
+#line 155 "./Parser.yy"
+                  {
+    printf("Found id : Quasiquoted s_exp \n");
+  }
+#line 932 "Parser.cpp"
+    break;
+
+  case 32: // id: T_FALSE
+#line 167 "./Parser.yy"
                   {
     printf("Found id : False \n");
     std::cout << "False" << std::endl;
   }
-#line 909 "Parser.cpp"
+#line 941 "Parser.cpp"
     break;
 
-  case 24: // id: T_TRUE
-#line 129 "./Parser.yy"
+  case 33: // id: T_TRUE
+#line 171 "./Parser.yy"
                   {
     printf("Found id : True \n");
     std::cout << "True" << std::endl;
   }
-#line 918 "Parser.cpp"
+#line 950 "Parser.cpp"
     break;
 
-  case 25: // id: T_INT
-#line 133 "./Parser.yy"
+  case 34: // id: T_INT
+#line 175 "./Parser.yy"
                   {
     printf("Found id : Int Const\n");
     std::cout << yystack_[0].value.as < int > () << std::endl;
   }
-#line 927 "Parser.cpp"
+#line 959 "Parser.cpp"
     break;
 
-  case 26: // id: T_FLOAT
-#line 137 "./Parser.yy"
+  case 35: // id: T_FLOAT
+#line 179 "./Parser.yy"
                   {
     printf("Found id : Float Const\n");
     std::cout << yystack_[0].value.as < float > () << std::endl;
   }
-#line 936 "Parser.cpp"
+#line 968 "Parser.cpp"
     break;
 
-  case 27: // id: T_CHAR
-#line 141 "./Parser.yy"
+  case 36: // id: T_CHAR
+#line 183 "./Parser.yy"
                   {
     printf("Found id : Char Const\n");
   }
-#line 944 "Parser.cpp"
+#line 976 "Parser.cpp"
     break;
 
-  case 28: // id: T_STRING
-#line 144 "./Parser.yy"
+  case 37: // id: T_STRING
+#line 186 "./Parser.yy"
                   {
     printf("Found id : String Const\n");
     std::cout << yystack_[0].value.as < std::string > () << std::endl;
   }
-#line 953 "Parser.cpp"
+#line 985 "Parser.cpp"
     break;
 
-  case 29: // id: T_KEYWORD
-#line 148 "./Parser.yy"
+  case 38: // id: T_KEYWORD
+#line 190 "./Parser.yy"
                   {
     printf("Found id : Keyword \n");
     std::cout << yystack_[0].value.as < std::string > () << std::endl;
   }
-#line 962 "Parser.cpp"
+#line 994 "Parser.cpp"
     break;
 
-  case 30: // id: T_ATOM
-#line 152 "./Parser.yy"
+  case 39: // id: T_ATOM
+#line 194 "./Parser.yy"
                   {
     printf("Found id : Atom \n");
     std::cout << yystack_[0].value.as < std::string > () << std::endl;
   }
-#line 971 "Parser.cpp"
+#line 1003 "Parser.cpp"
     break;
 
-  case 31: // id: T_NIL
-#line 156 "./Parser.yy"
+  case 40: // id: T_NIL
+#line 198 "./Parser.yy"
                   {
     printf("Found id : Nil \n");
   }
-#line 979 "Parser.cpp"
+#line 1011 "Parser.cpp"
     break;
 
 
-#line 983 "Parser.cpp"
+#line 1015 "Parser.cpp"
 
             default:
               break;
@@ -1168,113 +1200,120 @@ namespace calc {
 
 
 
-  const signed char Parser::yypact_ninf_ = -31;
+  const signed char Parser::yypact_ninf_ = -70;
 
   const signed char Parser::yytable_ninf_ = -1;
 
   const signed char
   Parser::yypact_[] =
   {
-      14,    48,    74,    93,     4,    14,    14,   -15,   112,   112,
-     112,   -31,   -31,   -31,   112,   112,   112,    15,   -31,   -31,
-     -31,   -31,   -31,   -31,   112,    -3,   112,    -4,     7,    28,
-     -31,   112,   -31,   -31,   -31,   -31,   125,   -31,   -31,   -31,
-     -31,   -31,   -31,   -31,   -31,   -31,   -31,   125,   -31,   125,
-     112,    21,    23,    19,    22,   -31,   -31,   -31,   -31
+       4,    34,    57,    76,    11,     4,     4,     4,    -3,     1,
+      76,    76,   -70,   -70,   -70,    76,    76,   -70,   -70,   -70,
+     -70,   -70,   -70,    76,    16,    76,    15,    20,     9,   -70,
+      76,   -70,   -70,   -70,   -70,   -70,    89,    35,   -70,   -70,
+     -70,   -70,   -70,   -70,   -70,    89,    38,   -70,    76,    36,
+      29,    42,    33,    49,   -70,    18,   -70,    18,   -70,    22,
+      22,    54,    53,    61,    63,    67,    22,    59,   -70,   -70,
+      71,    73,   -70,   -70,   -70,    25,    25,    75,    75,    68,
+      84,    75,    87,    97,   -70,   -70,   -70,   -70,   -70
   };
 
   const signed char
   Parser::yydefact_[] =
   {
-       2,    13,    13,     0,     0,     2,     2,     0,    13,    13,
-       0,    30,    29,    31,     0,     0,     0,     0,    23,    24,
-      26,    25,    27,    28,    13,     0,    13,     0,     0,    30,
-      12,     0,    11,     1,     4,     3,     0,    16,    17,    19,
-      18,    21,    20,    22,    14,     8,    15,     0,     9,     0,
-       0,     0,     0,     0,     0,     5,     6,     7,    10
+       2,    25,    25,     0,     0,     2,     2,     2,     0,     0,
+      25,    25,    39,    38,    40,     0,     0,    32,    33,    35,
+      34,    36,    37,    25,     0,    25,     0,     0,     0,    24,
+       0,    23,     1,     4,     5,     3,     0,     0,    28,    29,
+      31,    30,    26,    20,    27,     0,     0,    21,     0,     0,
+       0,     0,     0,     0,     6,     0,     7,     0,    22,    12,
+      12,     0,     0,     0,     0,     0,    12,     0,     8,     9,
+       0,     0,    10,    13,    11,     0,     0,    18,    18,     0,
+       0,    18,     0,     0,    14,    15,    19,    16,    17
   };
 
   const signed char
   Parser::yypgoto_[] =
   {
-     -31,     2,   -31,     0,   -30,    10,     8
+     -70,    19,   -70,   -70,    66,   -56,   -70,    40,   -69,     0,
+     -28,     6,    -2
   };
 
   const signed char
   Parser::yydefgoto_[] =
   {
-       0,     4,     5,    24,    31,    25,    26
+       0,     4,     5,     6,    61,    65,    66,    79,    82,    23,
+      30,    24,    25
   };
 
   const signed char
   Parser::yytable_[] =
   {
-       6,    50,    36,    30,    33,     6,     6,    34,    35,    45,
-      30,    32,    28,    47,    37,    39,    41,    43,    32,    28,
-      54,    48,    38,    40,    42,     1,     8,     2,     9,     3,
-      10,    30,    49,    55,    44,    57,    46,    56,    58,    32,
-       0,     0,     0,     0,    51,     0,     0,     0,     0,     0,
-      30,     0,     7,     0,     0,    52,     0,    53,    32,     8,
-       0,     9,     0,    10,     0,    11,    12,    13,    14,    15,
-      16,    17,    18,    19,    20,    21,    22,    23,    27,     0,
-       0,     0,     0,     0,     0,     8,     0,     9,     0,    10,
-       0,    11,    12,    13,    14,    15,    16,    17,    18,    19,
-      20,    21,    22,    23,     8,     0,     9,     0,    10,     0,
-      29,    12,    13,    14,    15,    16,    17,    18,    19,    20,
-      21,    22,    23,     8,     0,     9,     0,    10,     0,    11,
-      12,    13,    14,    15,    16,    17,    18,    19,    20,    21,
-      22,    23,    11,    12,    13,    14,    15,    16,    17,    18,
-      19,    20,    21,    22,    23
+       7,    31,    48,    29,    67,     7,     7,     7,    28,    83,
+      73,    32,    86,    39,    41,    38,    40,    28,    36,     1,
+      53,     2,    37,     3,    33,    34,    35,    47,    31,    42,
+      29,    44,    43,    59,    49,    60,    45,    63,     8,    64,
+      77,    46,    78,    51,    50,     9,    31,    52,    29,    10,
+      55,    11,    54,     3,    57,    12,    13,    14,    15,    16,
+      56,    26,    17,    18,    19,    20,    21,    22,    27,    58,
+      68,    69,    10,    70,    11,    71,     3,    74,    12,    13,
+      14,    15,    16,    72,    84,    17,    18,    19,    20,    21,
+      22,    10,    75,    11,    76,     3,    81,    12,    13,    14,
+      15,    16,    85,    87,    17,    18,    19,    20,    21,    22,
+      12,    13,    14,    15,    16,    88,    80,    17,    18,    19,
+      20,    21,    22,    62
   };
 
   const signed char
   Parser::yycheck_[] =
   {
-       0,    31,    17,     3,     0,     5,     6,     5,     6,    12,
-      10,     3,     2,    17,    14,    15,    16,    17,    10,     9,
-      50,    14,    14,    15,    16,    11,    11,    13,    13,    15,
-      15,    31,     4,    12,    24,    16,    26,    14,    16,    31,
-      -1,    -1,    -1,    -1,    36,    -1,    -1,    -1,    -1,    -1,
-      50,    -1,     4,    -1,    -1,    47,    -1,    49,    50,    11,
-      -1,    13,    -1,    15,    -1,    17,    18,    19,    20,    21,
-      22,    23,    24,    25,    26,    27,    28,    29,     4,    -1,
-      -1,    -1,    -1,    -1,    -1,    11,    -1,    13,    -1,    15,
-      -1,    17,    18,    19,    20,    21,    22,    23,    24,    25,
-      26,    27,    28,    29,    11,    -1,    13,    -1,    15,    -1,
-      17,    18,    19,    20,    21,    22,    23,    24,    25,    26,
-      27,    28,    29,    11,    -1,    13,    -1,    15,    -1,    17,
-      18,    19,    20,    21,    22,    23,    24,    25,    26,    27,
-      28,    29,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29
+       0,     3,    30,     3,    60,     5,     6,     7,     2,    78,
+      66,     0,    81,    15,    16,    15,    16,    11,    21,    15,
+      48,    17,    21,    19,     5,     6,     7,    18,    30,    23,
+      30,    25,    16,    15,    36,    17,    21,    15,     4,    17,
+      15,    21,    17,    45,     9,    11,    48,     9,    48,    15,
+      21,    17,    16,    19,    21,    21,    22,    23,    24,    25,
+      18,     4,    28,    29,    30,    31,    32,    33,    11,    20,
+      16,    18,    15,    12,    17,    12,    19,    18,    21,    22,
+      23,    24,    25,    16,    16,    28,    29,    30,    31,    32,
+      33,    15,    21,    17,    21,    19,    21,    21,    22,    23,
+      24,    25,    18,    16,    28,    29,    30,    31,    32,    33,
+      21,    22,    23,    24,    25,    18,    76,    28,    29,    30,
+      31,    32,    33,    57
   };
 
   const signed char
   Parser::yystos_[] =
   {
-       0,    11,    13,    15,    31,    32,    33,     4,    11,    13,
-      15,    17,    18,    19,    20,    21,    22,    23,    24,    25,
-      26,    27,    28,    29,    33,    35,    36,     4,    35,    17,
-      33,    34,    36,     0,    31,    31,    17,    33,    36,    33,
-      36,    33,    36,    33,    35,    12,    35,    17,    14,     4,
-      34,    36,    36,    36,    34,    12,    14,    16,    16
+       0,    15,    17,    19,    35,    36,    37,    43,     4,    11,
+      15,    17,    21,    22,    23,    24,    25,    28,    29,    30,
+      31,    32,    33,    43,    45,    46,     4,    11,    45,    43,
+      44,    46,     0,    35,    35,    35,    21,    21,    43,    46,
+      43,    46,    45,    16,    45,    21,    21,    18,    44,    46,
+       9,    46,     9,    44,    16,    21,    18,    21,    20,    15,
+      17,    38,    38,    15,    17,    39,    40,    39,    16,    18,
+      12,    12,    16,    39,    18,    21,    21,    15,    17,    41,
+      41,    21,    42,    42,    16,    18,    42,    16,    18
   };
 
   const signed char
   Parser::yyr1_[] =
   {
-       0,    30,    31,    31,    31,    32,    32,    32,    33,    33,
-      33,    34,    34,    35,    35,    35,    36,    36,    36,    36,
-      36,    36,    36,    36,    36,    36,    36,    36,    36,    36,
-      36,    36
+       0,    34,    35,    35,    35,    35,    36,    36,    37,    37,
+      38,    38,    39,    39,    40,    40,    41,    41,    42,    42,
+      43,    43,    43,    44,    44,    45,    45,    45,    46,    46,
+      46,    46,    46,    46,    46,    46,    46,    46,    46,    46,
+      46
   };
 
   const signed char
   Parser::yyr2_[] =
   {
-       0,     2,     0,     2,     2,     5,     5,     5,     3,     3,
-       5,     1,     1,     0,     2,     2,     2,     2,     2,     2,
-       2,     2,     2,     1,     1,     1,     1,     1,     1,     1,
-       1,     1
+       0,     2,     0,     2,     2,     2,     5,     5,     7,     7,
+       3,     3,     0,     2,     5,     5,     3,     3,     0,     2,
+       3,     3,     5,     1,     1,     0,     2,     2,     2,     2,
+       2,     2,     1,     1,     1,     1,     1,     1,     1,     1,
+       1
   };
 
 
@@ -1285,12 +1324,16 @@ namespace calc {
   const Parser::yytname_[] =
   {
   "\"end of file\"", "error", "\"invalid token\"", "T_ERROR", "T_DEFINE",
-  "T_COND", "T_EVAL", "T_READ", "T_LAMBDA", "T_DEFINE_CLASS",
-  "T_DEFINE_METHOD", "T_L_PAREN1", "T_R_PAREN1", "T_L_PAREN2",
+  "T_COND", "T_EVAL", "T_READ", "T_LAMBDA", "T_AS", "T_ANY",
+  "T_DEFINE_CLASS", "T_DEFINE_METHOD", "T_CLASS_INSTANCE",
+  "T_METHOD_INSTANCE", "T_L_PAREN1", "T_R_PAREN1", "T_L_PAREN2",
   "T_R_PAREN2", "T_L_BRACK", "T_R_BRACK", "T_ATOM", "T_KEYWORD", "T_NIL",
   "T_QUOTE", "T_QUASI_Q", "T_UNQUOTE", "T_SPLICE", "T_FALSE", "T_TRUE",
   "T_FLOAT", "T_INT", "T_CHAR", "T_STRING", "$accept", "input", "define",
-  "s_exp", "s_exp_no_list", "s_exp_list", "id", YY_NULLPTR
+  "define_class", "define_class_method_list_pre",
+  "define_class_method_list", "define_class_method",
+  "define_class_method_args", "args", "s_exp", "s_exp_no_list",
+  "s_exp_list", "id", YY_NULLPTR
   };
 #endif
 
@@ -1299,10 +1342,11 @@ namespace calc {
   const unsigned char
   Parser::yyrline_[] =
   {
-       0,    60,    60,    61,    62,    66,    69,    72,    78,    81,
-      84,    90,    91,    94,    95,    98,   104,   107,   110,   113,
-     116,   119,   122,   125,   129,   133,   137,   141,   144,   148,
-     152,   156
+       0,    63,    63,    64,    65,    66,    71,    74,    81,    84,
+      89,    90,    92,    93,    98,   101,   106,   109,   113,   114,
+     121,   124,   127,   132,   133,   135,   136,   139,   146,   149,
+     152,   155,   167,   171,   175,   179,   183,   186,   190,   194,
+     198
   };
 
   void
@@ -1369,10 +1413,10 @@ namespace calc {
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
       15,    16,    17,    18,    19,    20,    21,    22,    23,    24,
-      25,    26,    27,    28,    29
+      25,    26,    27,    28,    29,    30,    31,    32,    33
     };
     // Last valid token kind.
-    const int code_max = 284;
+    const int code_max = 288;
 
     if (t <= 0)
       return symbol_kind::S_YYEOF;
@@ -1384,9 +1428,9 @@ namespace calc {
 
 #line 18 "./Parser.yy"
 } // calc
-#line 1388 "Parser.cpp"
+#line 1432 "Parser.cpp"
 
-#line 161 "./Parser.yy"
+#line 203 "./Parser.yy"
 
 
 void calc::Parser::error(const std::string& msg) {
