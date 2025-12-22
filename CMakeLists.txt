@@ -17,6 +17,15 @@ set(SOURCES
 
     src/Frontend/Lexer/Scanner.hpp
     src/Frontend/Lexer/Scanner.cpp
+
+    src/Backend/Interpreter/Interpreter.cpp
+    src/Backend/Interpreter/Interpreter.hpp
+
+    src/Backend/SymbolTable/SymbolTable.h
+    src/Backend/SymbolTable/SymbolTable.c
+
+    src/Backend/Data/Data.hpp
+    src/Backend/Data/Data.cpp
 )
 
 # Add an executable with the above sources

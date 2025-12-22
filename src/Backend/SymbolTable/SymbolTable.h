@@ -5,10 +5,11 @@
 #include <unordered_map>
 #include "Data.hpp"
 
-namespace sym {
+namespace lisp::backend {
 
 struct Symbol {
   std::string name;
+  std::string type; // class , method or other primitive types like 
   jit_data::Data data ;
   bool immutable = false;
 };
@@ -21,8 +22,8 @@ public:
   SymbolTable();
   ~SymbolTable();
 
-  bool isExist(const std::string &name);
-  void defineSymbol(const Symbol &symbol);
+  bool isExist(const std::string &nameOfSymbol);
+  bool isMutable(const std::string &nameOfSymbol);
   void setSymbol(const std::string &nameOfSymbol,
                  const jit_data::Data newData, const bool newImmutablity);
   void unsetSymbol(const std::string &nameOfSymbol);

@@ -8,7 +8,7 @@
 #include <libgccjit.h>
 #endif
 
-namespace jit_data {
+namespace lisp::backend {
 
 class Data {
 

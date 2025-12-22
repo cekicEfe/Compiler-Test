@@ -5,7 +5,7 @@
 #include <memory>
 #include <variant>
 
-namespace intpr {
+namespace lisp::backend {
 
 class ConsCell {
 private:
@@ -23,7 +23,7 @@ public:
 
 class Interpeter {
 private:
-  sym::SymbolTable symbolTable;
+  lisp::backend::SymbolTable symbolTable;
 
 public:
 };

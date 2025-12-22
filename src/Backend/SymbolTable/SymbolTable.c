@@ -1,7 +1,7 @@
 #include "SymbolTable.h"
 #include <stdexcept>
 
-using namespace sym;
+using namespace lisp::backend;
 
 SymbolTable::SymbolTable() {}
 SymbolTable::~SymbolTable() {}
@@ -14,30 +14,11 @@ bool SymbolTable::isExist(const std::string &name) {
     return false;
 }
 
-void SymbolTable::defineSymbol(const Symbol &sym) {
-  if (!this->isExist(sym.name))
-    this->symbols[sym.name] = sym;
-  else
-    throw std::invalid_argument("Given symbol already exists");
-}
-
-void SymbolTable::setSymbol(const std::string &nameOfSymbol,
-                            const std::string &newType, const Data newData,
-                            const bool newImmutablity) {
-  if (this->isExist(nameOfSymbol)) {
-    if (this->symbols[nameOfSymbol].immutable != true)
-      this->symbols[nameOfSymbol] =
-          Symbol{nameOfSymbol, newType, newData, newImmutablity};
-    else
-      throw std::invalid_argument("Given symbol is not mutable");
-  } else
-    throw std::invalid_argument("Given symbol does not exists");
-}
-
-void SymbolTable::unsetSymbol(const std::string &nameOfSymbol) {
-  if (auto pos = this->symbols.find(nameOfSymbol); pos != this->symbols.end()) {
-    this->symbols.erase(pos);
-  } else {
-    throw std::invalid_argument("Given symbol does not exists");
+bool SymbolTable::isMutable(const std::string &nameOfSymbol){
+  bool exist = this->isExist(nameOfSymbol);
+  if(exist){
+    return this->symbols[nameOfSymbol].immutable;
+  }else{
+    throw std::invalid_argument("Given symbol : " + nameOfSymbol + " -> Does not exists");
   }
 }
