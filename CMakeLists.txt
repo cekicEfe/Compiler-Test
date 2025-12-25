@@ -21,11 +21,11 @@ set(SOURCES
     src/Backend/Interpreter/Interpreter.cpp
     src/Backend/Interpreter/Interpreter.hpp
 
-    src/Backend/SymbolTable/SymbolTable.h
-    src/Backend/SymbolTable/SymbolTable.c
+    src/Backend/SymbolTable/SymbolTable.hpp
+    src/Backend/SymbolTable/SymbolTable.cpp
 
-    src/Backend/Data/Data.hpp
-    src/Backend/Data/Data.cpp
+    src/Backend/Jit/Jit.hpp
+    src/Backend/Jit/Jit.cpp
 )
 
 # Add an executable with the above sources
@@ -43,5 +43,5 @@ target_include_directories(TEST_LISP_MAIN
 
         ${PROJECT_SOURCE_DIR}/src/Backend/Interpreter
         ${PROJECT_SOURCE_DIR}/src/Backend/SymbolTable
-        ${PROJECT_SOURCE_DIR}/src/Backend/Data
-)
+        ${PROJECT_SOURCE_DIR}/src/Backend/Jit
+    )

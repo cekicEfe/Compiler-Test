@@ -1,4 +1,4 @@
-#include "SymbolTable.h"
+#include "SymbolTable.hpp"
 #include <stdexcept>
 
 using namespace lisp::backend;
