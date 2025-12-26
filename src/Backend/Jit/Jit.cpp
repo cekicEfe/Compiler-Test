@@ -9,11 +9,19 @@ Jit::Jit() {}
 
 Jit::~Jit() {}
 
-void Jit::init_context() { this->parent_context = gccjit::context::acquire(); }
+void Jit::init_context() {
+  this->parent_context = gccjit::context::acquire();
+  // to create child context
+  // gccjit::context child =
+  //   this->parent_context.new_child_context();
+}
 
 void Jit::create_types() {
-
-  auto int_type = this->parent_context.get_type(GCC_JIT_TYPE_INT);
+  this->int_type = this->parent_context.get_type(GCC_JIT_TYPE_INT);
+  this->float_type = this->parent_context.get_type(GCC_JIT_TYPE_FLOAT);
+  this->char_type = this->parent_context.get_type(GCC_JIT_TYPE_CHAR);
+  this->bool_type = this->parent_context.get_type(GCC_JIT_TYPE_BOOL);
+  this->array_type = this->parent_context.get_type(GCC_JIT_TYPE_VOID_PTR);
 }
 
 std::optional<gcc_jit_result *> Jit::compile_context() {
